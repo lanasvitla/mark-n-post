@@ -1796,8 +1796,8 @@ details p {
   }
 
   .site-header {
-    min-height: 80px;
-    padding-block: 9px;
+    min-height: 70px;
+    padding-block: 4px;
     gap: 12px;
     background: #fff;
     isolation: isolate;
