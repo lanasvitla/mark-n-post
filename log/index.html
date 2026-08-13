@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Mark’n’Post — лог изменений</title>
+    <meta name="description" content="Лог изменений проекта Mark’n’Post." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="log-header">
+      <span class="header-label">Журнал версий</span>
+    </header>
+
+    <main>
+      <section class="versions" aria-label="Версии сайта">
+        <a class="version-row version-row--current" href="../">
+          <strong>Версия 2</strong>
+          <time datetime="2026-08-13">13 августа 2026</time>
+          <span class="version-hours">15 часов</span>
+          <span>Текущая версия</span>
+          <i aria-hidden="true">→</i>
+        </a>
+
+        <a class="version-row" href="../v1/">
+          <strong>Версия 1</strong>
+          <time datetime="2026-08-12">12 августа 2026</time>
+          <span class="version-hours">4 часа</span>
+          <span>Архив</span>
+          <i aria-hidden="true">→</i>
+        </a>
+      </section>
+
+      <p class="figma-note">* <a href="https://www.figma.com/design/75i2Jfc12WE8vVxK3YfREZ/Mark-n-Post?node-id=18-2&amp;t=7XqPXRrmELWdciAx-1" target="_blank" rel="noopener noreferrer">Макет лендинга в Figma</a> (спросить пароль у разработчика)</p>
+
+      <section class="changes" aria-labelledby="changes-title">
+        <div class="changes-heading">
+          <p class="eyebrow">Версия 2</p>
+          <h2 id="changes-title">Что изменилось</h2>
+        </div>
+
+        <div class="changes-content">
+          <p class="launch-note">Необходимо подключение домена для запуска и функционирования лендинга</p>
+
+          <ol class="change-list">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>Аналитика и адаптивные версии</h3>
+              <p>Подключены Яндекс Метрика и Google Analytics. Настроены все базовые адаптивные разрешения.</p>
+              <p class="analytics-note">Данные аналитики нужно сменить на аккаунты владельца или настроить передачу для просмотра</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>Единая визуальная система</h3>
+              <p>Унифицированы сетка 1180 px, отступы, типографика, стили кнопок и карточек, 2 формы расчета.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>Первый экран и медиа</h3>
+              <p>Пересобрана композиция hero экрана, заменен рендер коробок; добавлены 9 новых файлов и оптимизированные WebP.</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>Навигация и 5 точек входа</h3>
+              <p>Настроены якорные ссылки, автопоявление CTA в шапке, выбор типа отправления и полный контактный экран.</p>
+            </div>
+          </li>
+          <li>
+            <span>05</span>
+            <div>
+              <h3>7 шаблонов для мессенджеров</h3>
+              <p>Расчет, переезд, магазин, услуга, направление, передача и упаковка. В Telegram и WhatsApp приходит заполненный текст в виде шаблона, который нужно дозаполнить, или уже с данными из форм сайта. Клиенту остается только нажать кнопку отправки.</p>
+              <details class="message-example">
+                <summary>Пример шаблона расчета</summary>
+                <pre>Здравствуйте!
+
+Хочу получить расчет доставки Mark’n’Post.
+
+Данные отправления:
+Направление: [откуда → куда]
+Тип отправления: [указать]
+Примерный вес: [указать]
+Размеры: [указать]</pre>
+                <img class="message-example-image" src="../assets/log-telegram-template.webp" alt="Пример заполненного сообщения для расчета доставки в Telegram" width="1040" height="944" loading="lazy" decoding="async" />
+              </details>
+            </div>
+          </li>
+          <li>
+            <span>06</span>
+            <div>
+              <h3>Раздел упаковки: 3 позиции</h3>
+              <p>Коробки, вакуумные пакеты и пузырчатая пленка получили изображения, hover-заказ и отдельный CTA.</p>
+            </div>
+          </li>
+          <li>
+            <span>07</span>
+            <div>
+              <h3>3 карточки и 9 отзывов</h3>
+              <p>Автосмена по разным интервалам, раскрытие текста, пауза при чтении и анимированная индикация рейтинга.</p>
+            </div>
+          </li>
+          <li>
+            <span>08</span>
+            <div>
+              <h3>8 групп микроанимаций</h3>
+              <p>Индикатор ожидания, hover медиа, упаковка, смена отзывов, блик рейтинга, звезды, CTA и соцссылки.</p>
+            </div>
+          </li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Mark’n’Post</span>
+      <span>Журнал версий</span>
+    </footer>
+  </body>
+</html>
