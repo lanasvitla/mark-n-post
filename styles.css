@@ -60,6 +60,8 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+  background: var(--surface);
 }
 
 body {
@@ -1796,6 +1798,10 @@ details p {
   }
 
   .site-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     min-height: 70px;
     padding-block: 4px;
     gap: 12px;
@@ -1803,6 +1809,25 @@ details p {
     isolation: isolate;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+  }
+
+  .site-header::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    height: 200px;
+    background: #fff;
+    pointer-events: none;
+  }
+
+  main {
+    padding-top: 70px;
+  }
+
+  html {
+    scroll-padding-top: 70px;
   }
 
   .brand span {
