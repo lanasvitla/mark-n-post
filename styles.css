@@ -1798,6 +1798,10 @@ details p {
   .site-header {
     min-height: 82px;
     gap: 12px;
+    background: #fff;
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .brand span {
