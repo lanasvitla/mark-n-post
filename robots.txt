@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /v1/
+Disallow: /log/
+
+Sitemap: https://moving.marknpost.com/sitemap.xml

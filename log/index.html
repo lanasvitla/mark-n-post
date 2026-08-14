@@ -4,83 +4,332 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
     <title>Mark’n’Post — лог изменений</title>
     <meta name="description" content="Лог изменений проекта Mark’n’Post." />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../assets/marknpost-logo.svg?v=20260814-2" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../assets/marknpost-logo.png" />
+    <link rel="stylesheet" href="styles.css?v=20260814-8" />
   </head>
   <body>
     <header class="log-header">
-      <span class="header-label">Журнал версий</span>
+      <h1 class="header-label">Журнал версий</h1>
     </header>
 
     <main>
-      <section class="versions" aria-label="Версии сайта">
-        <a class="version-row version-row--current" href="../">
-          <strong>Версия 2</strong>
-          <time datetime="2026-08-13">13 августа 2026</time>
-          <span class="version-hours">15 часов</span>
-          <span>Текущая версия</span>
-          <i aria-hidden="true">→</i>
-        </a>
+      <section class="version-log" aria-label="Лог версий сайта">
+        <!-- Draft version: freeze this section's text after the v2.1 push. -->
+        <details class="version-entry version-entry--current" name="site-version">
+          <summary class="version-summary">
+            <strong>Версия 2.1</strong>
+            <time datetime="2026-08-14">14 августа 2026</time>
+            <span class="version-hours">5 часов</span>
+            <span>Текущая версия</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
 
-        <a class="version-row" href="../v1/">
-          <strong>Версия 1</strong>
-          <time datetime="2026-08-12">12 августа 2026</time>
-          <span class="version-hours">4 часа</span>
-          <span>Архив</span>
-          <i aria-hidden="true">→</i>
-        </a>
-      </section>
+          <div class="version-panel">
+            <a class="version-network-link" href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">
+              <span>Открыть версию 2.1 в&nbsp;сети</span>
+              <i aria-hidden="true">↗</i>
+            </a>
 
-      <p class="figma-note">* <a href="https://www.figma.com/design/75i2Jfc12WE8vVxK3YfREZ/Mark-n-Post?node-id=18-2&amp;t=7XqPXRrmELWdciAx-1" target="_blank" rel="noopener noreferrer">Макет лендинга в Figma</a> (спросить пароль у разработчика)</p>
+            <section class="changes" aria-labelledby="changes-v21-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 2.1</p>
+                <h2 id="changes-v21-title">Что изменилось</h2>
+              </div>
 
-      <section class="changes" aria-labelledby="changes-title">
-        <div class="changes-heading">
-          <p class="eyebrow">Версия 2</p>
-          <h2 id="changes-title">Что изменилось</h2>
-        </div>
+              <div class="changes-content">
+                <p class="launch-note launch-note--pending">
+                  <a href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">Поддомен подключен</a>. HTTPS-сертификат выпущен; осталось включить Enforce HTTPS в&nbsp;настройках GitHub Pages.
+                </p>
 
-        <div class="changes-content">
-          <p class="launch-note">Необходимо подключение домена для запуска и функционирования лендинга</p>
+                <ol class="change-list">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <h3>Подключен адрес moving.marknpost.com</h3>
+                      <p>Для лендинга создан отдельный поддомен и&nbsp;CNAME-запись на&nbsp;GitHub Pages. DNS-проверка GitHub пройдена, сайт открывается по&nbsp;HTTP и&nbsp;HTTPS.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <h3>Компактный хедер и&nbsp;стабильная мобильная версия</h3>
+                      <p>Высота desktop/tablet-хедера уменьшена с&nbsp;92 до&nbsp;72&nbsp;px, вертикальные отступы — с&nbsp;14 до&nbsp;4&nbsp;px. Мобильная высота сохранена около 71&nbsp;px.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div>
+                      <h3>Favicon, Apple icon и&nbsp;social preview</h3>
+                      <p class="section-lead">Добавлены:</p>
+                      <ul class="fact-list">
+                        <li>favicon с&nbsp;закругленными краями на&nbsp;основе лого;</li>
+                        <li>Apple touch icon;</li>
+                        <li>Open Graph / Social Preview;</li>
+                        <li>Twitter/X Preview.</li>
+                      </ul>
+                      <p class="fact-note">Для социальных карточек подключен квадратный PNG 1600×1600 с&nbsp;заголовком, описанием и&nbsp;финальным адресом лендинга.</p>
 
-          <ol class="change-list">
-          <li>
-            <span>01</span>
-            <div>
-              <h3>Аналитика и адаптивные версии</h3>
-              <p>Подключены Яндекс Метрика и Google Analytics. Настроены все базовые адаптивные разрешения.</p>
-              <p class="analytics-note">Данные аналитики нужно сменить на аккаунты владельца или настроить передачу для просмотра</p>
-            </div>
-          </li>
-          <li>
-            <span>02</span>
-            <div>
-              <h3>Единая визуальная система</h3>
-              <p>Унифицированы сетка 1180 px, отступы, типографика, стили кнопок и карточек, 2 формы расчета.</p>
-            </div>
-          </li>
-          <li>
-            <span>03</span>
-            <div>
-              <h3>Первый экран и медиа</h3>
-              <p>Пересобрана композиция hero экрана, заменен рендер коробок; добавлены 9 новых файлов и оптимизированные WebP.</p>
-            </div>
-          </li>
-          <li>
-            <span>04</span>
-            <div>
-              <h3>Навигация и 5 точек входа</h3>
-              <p>Настроены якорные ссылки, автопоявление CTA в шапке, выбор типа отправления и полный контактный экран.</p>
-            </div>
-          </li>
-          <li>
-            <span>05</span>
-            <div>
-              <h3>7 шаблонов для мессенджеров</h3>
-              <p>Расчет, переезд, магазин, услуга, направление, передача и упаковка. В Telegram и WhatsApp приходит заполненный текст в виде шаблона, который нужно дозаполнить, или уже с данными из форм сайта. Клиенту остается только нажать кнопку отправки.</p>
-              <details class="message-example">
-                <summary>Пример шаблона расчета</summary>
-                <pre>Здравствуйте!
+                      <details class="social-preview-accordion" name="content-accordion">
+                        <summary>Посмотреть вид социальных карточек</summary>
+                        <div class="social-preview-grid">
+                          <article class="social-preview-card">
+                            <p class="social-preview-label">Open Graph / Social Preview</p>
+                            <div class="social-preview-body social-preview-body--og">
+                              <div class="social-preview-media social-preview-media--og">
+                                <img src="../assets/marknpost-logo.png" alt="Логотип Mark’n’Post" width="1600" height="1600" loading="lazy" decoding="async" />
+                              </div>
+                              <div>
+                                <span>moving.marknpost.com</span>
+                                <h4>Mark’n’Post — доставка из&nbsp;Грузии</h4>
+                                <p>Посылки, документы, личные вещи, переезды и&nbsp;упаковка с&nbsp;отправкой из&nbsp;Грузии.</p>
+                              </div>
+                            </div>
+                          </article>
+                          <article class="social-preview-card">
+                            <p class="social-preview-label">Twitter/X Preview</p>
+                            <div class="social-preview-body social-preview-body--x">
+                              <div class="social-preview-media social-preview-media--x">
+                                <img src="../assets/marknpost-logo.png" alt="Логотип Mark’n’Post" width="1600" height="1600" loading="lazy" decoding="async" />
+                              </div>
+                              <div>
+                                <h4>Mark’n’Post — доставка из&nbsp;Грузии</h4>
+                                <p>Посылки, документы, личные вещи, переезды и&nbsp;упаковка с&nbsp;отправкой из&nbsp;Грузии.</p>
+                                <span>moving.marknpost.com</span>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      </details>
+                    </div>
+                  </li>
+                  <li>
+                    <span>04</span>
+                    <div>
+                      <h3>SEO и&nbsp;финальный домен</h3>
+                      <p class="section-lead">Добавлены:</p>
+                      <ul class="fact-list">
+                        <li>расширенные title и&nbsp;description;</li>
+                        <li>canonical и&nbsp;robots meta;</li>
+                        <li>Organization JSON-LD;</li>
+                        <li>файлы robots.txt и&nbsp;sitemap.xml;</li>
+                        <li>публичные URL на&nbsp;<a href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">https://moving.marknpost.com/</a>;</li>
+                        <li>новая версия CSS для защиты от&nbsp;старого кеша.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span>05</span>
+                    <div>
+                      <h3>8 форматов сообщений для Telegram и&nbsp;WhatsApp</h3>
+                      <p>Сохранены семь готовых сценариев и&nbsp;один динамический шаблон формы. Во&nbsp;всех сообщениях указан реальный адрес moving.marknpost.com.</p>
+
+                      <details class="template-accordion" name="content-accordion">
+                        <summary>Посмотреть все 8 шаблонов</summary>
+                        <div class="template-grid">
+                          <article class="template-card">
+                            <h4>1. Переезд / личные вещи</h4>
+                            <pre>Здравствуйте!
+
+Хочу обсудить перевозку личных вещей с Mark’n’Post.
+
+Данные отправления:
+Что отправить: личные вещи при переезде
+Откуда: Грузия
+Куда: [страна / город]
+Примерный объем / вес: [указать]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>2. Заказ из интернет-магазина</h4>
+                            <pre>Здравствуйте!
+
+Хочу узнать условия доставки заказа из интернет-магазина через Mark’n’Post.
+
+Данные отправления:
+Магазин: [Ozon / другой]
+Что нужно получить: [указать]
+Куда доставить: [страна / город]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>3. Расчет доставки</h4>
+                            <pre>Здравствуйте!
+
+Хочу получить расчет доставки Mark’n’Post.
+
+Данные отправления:
+Направление: [откуда → куда]
+Тип отправления: [посылка / документы / переезд / заказ / упаковка]
+Примерный вес: [указать]
+Размеры: [указать]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>4. Уточнение услуги</h4>
+                            <pre>Здравствуйте!
+
+Хочу уточнить услугу Mark’n’Post.
+
+Интересует доставка из Грузии. Подскажите, пожалуйста, какой формат подойдет для моей задачи.
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>5. Проверка направления</h4>
+                            <pre>Здравствуйте!
+
+Хочу уточнить направление доставки Mark’n’Post.
+
+Данные отправления:
+Откуда: Грузия
+Куда: [страна / город]
+Тип отправления: [посылка / документы / переезд / заказ]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>6. Передача отправления</h4>
+                            <pre>Здравствуйте!
+
+Хочу согласовать передачу отправления Mark’n’Post.
+
+Данные отправления:
+Тип отправления: [указать]
+Когда удобно передать: [дата / время]
+Комментарий: [указать]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>7. Заказ упаковки</h4>
+                            <pre>Здравствуйте!
+
+Хочу заказать упаковку в Mark’n’Post.
+
+Что нужно:
+Коробки / материалы: [указать]
+Количество: [указать]
+Для чего: [посылка / документы / переезд]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                          <article class="template-card">
+                            <h4>8. Форма расчета — динамический шаблон</h4>
+                            <pre>Здравствуйте!
+
+Хочу получить расчет доставки Mark’n’Post.
+
+Данные отправления:
+[заполненные поля формы]
+
+Сообщение отправлено с сайта moving.marknpost.com</pre>
+                          </article>
+                        </div>
+                      </details>
+                    </div>
+                  </li>
+                  <li>
+                    <span>06</span>
+                    <div>
+                      <h3>Responsive и&nbsp;техническая проверка</h3>
+                      <p>Проверены ширины 1440, 1120, 860, 721, 720 и&nbsp;390&nbsp;px: горизонтального переполнения нет, хедер сохраняет нужную высоту, консоль работает без ошибок. Пройдены проверки JavaScript, XML sitemap и&nbsp;чистоты diff.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>07</span>
+                    <div>
+                      <h3>Версионный журнал</h3>
+                      <p>Публичный лог перестроен в&nbsp;аккордеоны: каждая версия хранит собственный полный список работ и&nbsp;время работы над&nbsp;версией. Клик по&nbsp;строке раскрывает журнал, а&nbsp;первой строкой внутри идет ссылка на&nbsp;сетевую копию. Опубликованная версия 2 сохранена отдельным неизменяемым архивом /v2/. Общая ссылка на&nbsp;Figma оставлена серой сноской под&nbsp;списком версий.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>08</span>
+                    <div>
+                      <h3>Что остается завершить</h3>
+                      <ul class="fact-list fact-list--tasks">
+                        <li>включить Enforce HTTPS в&nbsp;настройках GitHub Pages;</li>
+                        <li>получить данные аккаунтов аналитики заказчика.</li>
+                      </ul>
+                      <p class="analytics-note analytics-note--strong">Ожидаются данные аккаунтов аналитики заказчика для подключения и&nbsp;настройки кабинетов Яндекс Метрики и&nbsp;Google Analytics.</p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <!-- Published v2 snapshot: keep the original log text unchanged inside this accordion. -->
+        <details class="version-entry" name="site-version">
+          <summary class="version-summary">
+            <strong>Версия 2</strong>
+            <time datetime="2026-08-13">13 августа 2026</time>
+            <span class="version-hours">15 часов</span>
+            <span>Предыдущая версия</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
+
+          <div class="version-panel">
+            <a class="version-network-link" href="https://moving.marknpost.com/v2/" target="_blank" rel="noopener noreferrer">
+              <span>Открыть версию 2 в&nbsp;сети</span>
+              <i aria-hidden="true">↗</i>
+            </a>
+
+            <section class="changes" aria-labelledby="changes-v2-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 2</p>
+                <h2 id="changes-v2-title">Что изменилось</h2>
+              </div>
+
+              <div class="changes-content">
+                <p class="launch-note">Необходимо подключение домена для запуска и функционирования лендинга</p>
+
+                <ol class="change-list">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <h3>Аналитика и адаптивные версии</h3>
+                      <p>Подключены Яндекс Метрика и Google Analytics. Настроены все базовые адаптивные разрешения.</p>
+                      <p class="analytics-note">Данные аналитики нужно сменить на аккаунты владельца или настроить передачу для просмотра</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <h3>Единая визуальная система</h3>
+                      <p>Унифицированы сетка 1180 px, отступы, типографика, стили кнопок и карточек, 2 формы расчета.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div>
+                      <h3>Первый экран и медиа</h3>
+                      <p>Пересобрана композиция hero экрана, заменен рендер коробок; добавлены 9 новых файлов и оптимизированные WebP.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>04</span>
+                    <div>
+                      <h3>Навигация и 5 точек входа</h3>
+                      <p>Настроены якорные ссылки, автопоявление CTA в шапке, выбор типа отправления и полный контактный экран.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>05</span>
+                    <div>
+                      <h3>7 шаблонов для мессенджеров</h3>
+                      <p>Расчет, переезд, магазин, услуга, направление, передача и упаковка. В Telegram и WhatsApp приходит заполненный текст в виде шаблона, который нужно дозаполнить, или уже с данными из форм сайта. Клиенту остается только нажать кнопку отправки.</p>
+                      <details class="message-example" name="content-accordion">
+                        <summary>Пример шаблона расчета</summary>
+                        <pre>Здравствуйте!
 
 Хочу получить расчет доставки Mark’n’Post.
 
@@ -89,34 +338,67 @@
 Тип отправления: [указать]
 Примерный вес: [указать]
 Размеры: [указать]</pre>
-                <img class="message-example-image" src="../assets/log-telegram-template.webp" alt="Пример заполненного сообщения для расчета доставки в Telegram" width="1040" height="944" loading="lazy" decoding="async" />
-              </details>
-            </div>
-          </li>
-          <li>
-            <span>06</span>
-            <div>
-              <h3>Раздел упаковки: 3 позиции</h3>
-              <p>Коробки, вакуумные пакеты и пузырчатая пленка получили изображения, hover-заказ и отдельный CTA.</p>
-            </div>
-          </li>
-          <li>
-            <span>07</span>
-            <div>
-              <h3>3 карточки и 9 отзывов</h3>
-              <p>Автосмена по разным интервалам, раскрытие текста, пауза при чтении и анимированная индикация рейтинга.</p>
-            </div>
-          </li>
-          <li>
-            <span>08</span>
-            <div>
-              <h3>8 групп микроанимаций</h3>
-              <p>Индикатор ожидания, hover медиа, упаковка, смена отзывов, блик рейтинга, звезды, CTA и соцссылки.</p>
-            </div>
-          </li>
-          </ol>
-        </div>
+                        <img class="message-example-image" src="../assets/log-telegram-template.webp" alt="Пример заполненного сообщения для расчета доставки в Telegram" width="1040" height="944" loading="lazy" decoding="async" />
+                      </details>
+                    </div>
+                  </li>
+                  <li>
+                    <span>06</span>
+                    <div>
+                      <h3>Раздел упаковки: 3 позиции</h3>
+                      <p>Коробки, вакуумные пакеты и пузырчатая пленка получили изображения, hover-заказ и отдельный CTA.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>07</span>
+                    <div>
+                      <h3>3 карточки и&nbsp;9 отзывов</h3>
+                      <p>Автосмена по разным интервалам, раскрытие текста, пауза при чтении и анимированная индикация рейтинга.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>08</span>
+                    <div>
+                      <h3>8 групп микроанимаций</h3>
+                      <p>Индикатор ожидания, hover медиа, упаковка, смена отзывов, блик рейтинга, звезды, CTA и соцссылки.</p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <!-- Published/archive v1 snapshot: keep previous-version text unchanged. -->
+        <details class="version-entry" name="site-version">
+          <summary class="version-summary">
+            <strong>Версия 1</strong>
+            <time datetime="2026-08-12">12 августа 2026</time>
+            <span class="version-hours">4 часа</span>
+            <span>Архив</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
+
+          <div class="version-panel version-panel--archive">
+            <a class="version-network-link" href="https://moving.marknpost.com/v1/" target="_blank" rel="noopener noreferrer">
+              <span>Открыть версию 1 в&nbsp;сети</span>
+              <i aria-hidden="true">↗</i>
+            </a>
+
+            <section class="changes" aria-labelledby="changes-v1-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 1</p>
+                <h2 id="changes-v1-title">Архив</h2>
+              </div>
+              <div class="changes-content archive-content">
+                <p>Первая опубликованная версия сохранена отдельно и&nbsp;не&nbsp;изменяется при работе над&nbsp;новыми итерациями.</p>
+              </div>
+            </section>
+          </div>
+        </details>
       </section>
+
+      <p class="figma-note version-footnote">* <a href="https://www.figma.com/design/75i2Jfc12WE8vVxK3YfREZ/Mark-n-Post?node-id=18-2&amp;t=7XqPXRrmELWdciAx-1" target="_blank" rel="noopener noreferrer">Макет лендинга в Figma</a> (спросить пароль у разработчика)</p>
     </main>
 
     <footer>

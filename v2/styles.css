@@ -94,8 +94,8 @@ textarea {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 28px;
-  min-height: 72px;
-  padding: 4px var(--page-x);
+  min-height: 92px;
+  padding: 14px var(--page-x);
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--line);
 }
