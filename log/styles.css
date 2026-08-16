@@ -333,6 +333,17 @@ p {
   margin-top: 0;
 }
 
+.change-list__attention h3,
+.fact-list--attention,
+.fact-list--attention a,
+.fact-list--attention > li::before {
+  color: var(--red);
+}
+
+.fact-list--attention {
+  font-weight: 700;
+}
+
 .message-example {
   margin-top: 16px;
   border-top: 1px solid var(--line);

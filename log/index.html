@@ -10,7 +10,8 @@
     <meta name="description" content="Лог изменений проекта Mark’n’Post." />
     <link rel="icon" href="../assets/marknpost-logo.svg?v=20260814-2" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/marknpost-logo.png" />
-    <link rel="stylesheet" href="styles.css?v=20260815-1" />
+    <link rel="stylesheet" href="styles.css?v=20260816-1" />
+    <script src="../assets/private-gate.js?v=20260816-1"></script>
   </head>
   <body>
     <header class="log-header">
@@ -19,6 +20,83 @@
 
     <main>
       <section class="version-log" aria-label="Лог версий сайта">
+        <!-- Published v2.2.1: keep this text unchanged after publication. -->
+        <details class="version-entry version-entry--current" name="site-version">
+          <summary class="version-summary">
+            <strong>Версия 2.2.1</strong>
+            <time datetime="2026-08-16T19:51:00+04:00">16 августа 2026, 19:51 (Тбилиси)</time>
+            <span class="version-hours">15 часов 7 минут</span>
+            <span>Текущая версия</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
+
+          <div class="version-panel">
+            <a class="version-network-link" href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">
+              <span>Открыть версию 2.2.1 в&nbsp;сети</span>
+              <i aria-hidden="true">↗</i>
+            </a>
+
+            <section class="changes" aria-labelledby="changes-v221-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 2.2.1</p>
+                <h2 id="changes-v221-title">Что изменилось</h2>
+              </div>
+
+              <div class="changes-content">
+                <ol class="change-list">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <h3>Техническая настройка и&nbsp;production-размещение</h3>
+                      <ul class="fact-list">
+                        <li>Доступы к&nbsp;Google Analytics 4 и&nbsp;Яндекс Метрике переданы рекламному специалисту. Но ожидается переход на&nbsp;собственные аккаунты команды заказчика.</li>
+                        <li>Production-размещение <a href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">moving.marknpost.com</a> перенесено с&nbsp;GitHub Pages на&nbsp;DigitalOcean App Platform. Причина переноса — выбор постоянного коммерческого хостинга перед рекламным запуском.</li>
+                        <li>GitHub сохранён как хранилище исходников и&nbsp;источник автоматических deploy, DigitalOcean отвечает за&nbsp;публикацию сайта, CDN, собственный домен и&nbsp;HTTPS. HTTP автоматически перенаправляется на&nbsp;HTTPS.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <h3>Структура сайта и&nbsp;основные изменения</h3>
+                      <ul class="fact-list">
+                        <li>Оптимизированы порядок и&nbsp;состав блоков: удалён дублирующий быстрый выбор и&nbsp;избыточный блок преимуществ; услуги поставлены перед информацией о&nbsp;компании; отзывы перенесены ближе к&nbsp;форме расчёта. Пользовательский маршрут стал короче: предложение → услуги и&nbsp;география → процесс → подтверждение доверия → расчёт и&nbsp;контакт.</li>
+                        <li>Полностью переработан блок «Отзывы». Добавлены реальные материалы Mark’n’Post: Instagram Reels и&nbsp;Highlights, скриншоты отзывов и&nbsp;Telegram-истории с&nbsp;прямыми ссылками на&nbsp;первоисточники, а&nbsp;также ссылки и&nbsp;статистика рейтингов с&nbsp;Google Business и&nbsp;Яндекс.Карты.</li>
+                        <li>Статистика доверия теперь показывается только вместе с&nbsp;проверяемым источником и&nbsp;рабочей ссылкой: <a href="https://business.google.com/v/cdek/012019392725139379785/ba05/_/rev/" target="_blank" rel="noopener noreferrer">Google Business — 4,9 и&nbsp;938 отзывов</a>, <a href="https://yandex.com.ge/maps/org/mark_n_post/104864484795/reviews/" target="_blank" rel="noopener noreferrer">Яндекс Карты — 5,0, 74 оценки и&nbsp;68 отзывов</a>, <a href="https://t.me/cdek_ge" target="_blank" rel="noopener noreferrer">Telegram-канал отзывов — 269 подписчиков</a>, <a href="https://www.instagram.com/marknpost/" target="_blank" rel="noopener noreferrer">Instagram — 12,7 тыс. подписчиков</a>.</li>
+                        <li>Блок «Четыре шага до&nbsp;отправки» дополнен реальными фотографиями процесса с&nbsp;Instagram. FAQ сокращён с&nbsp;семи до&nbsp;пяти вопросов: внутренние и&nbsp;неподтверждённые формулировки удалены.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div>
+                      <h3>Небольшие изменения</h3>
+                      <ul class="fact-list">
+                        <li>В&nbsp;мобильном хедере оставлены логотип со&nbsp;ссылкой на&nbsp;начало страницы и&nbsp;постоянно видимая кнопка «Рассчитать стоимость»; отдельная кнопка, появлявшаяся после прокрутки, удалена, чтобы на&nbsp;мобильном не&nbsp;спорили две одинаковые по&nbsp;механике кнопки.</li>
+                        <li>Уточнены CTA расчёта и&nbsp;перехода в&nbsp;Telegram; рядом с&nbsp;внешним переходом добавлено пояснение «Откроется в&nbsp;Telegram».</li>
+                        <li>География обновлена: Грузия, Россия, Сербия, Испания, Португалия и&nbsp;страны СНГ. Нужны дополнительные подтверждения по&nbsp;логике рекламных объявлений.</li>
+                        <li>Для мобильного Яндекс Браузера закреплены светлая цветовая схема и&nbsp;белый фон страницы, чтобы системная тёмная тема не&nbsp;меняла фирменные цвета и&nbsp;фон хедера.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="change-list__attention">
+                    <span>04</span>
+                    <div>
+                      <h3>Что осталось перед рекламным запуском</h3>
+                      <ul class="fact-list fact-list--tasks fact-list--attention">
+                        <li>Получить данные собственных аккаунтов аналитики, карту событий, идентификаторы целей и&nbsp;техническое задание; затем внедрить события и&nbsp;проверить их&nbsp;передачу в&nbsp;GA4 и&nbsp;Яндекс Метрику.</li>
+                        <li>Подтвердить актуальные маршруты перевозок и&nbsp;порядок их&nbsp;запуска: Россия → Грузия, Грузия → Россия, Грузия → Сербия, Грузия → Испания, Грузия → Португалия, Россия → Испания.</li>
+                        <li>Для каждого приоритетного маршрута получить согласованный рекламный акцент: какие услуги и&nbsp;типы отправлений продвигаются, какое преимущество можно обещать, какие сроки, условия и&nbsp;подтверждённые факты допустимо использовать в&nbsp;объявлениях.</li>
+                        <li>После согласования подготовить отдельные маршрутные URL на&nbsp;одном дизайн-шаблоне и&nbsp;связать их&nbsp;с&nbsp;рекламными кампаниями, Telegram-шаблонами и&nbsp;аналитикой.</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </details>
+
         <!-- Draft v2.2: accumulate completed work here; freeze the text after publication. -->
         <details class="version-entry" name="site-version">
           <summary class="version-summary">
@@ -76,17 +154,17 @@
         </details>
 
         <!-- Published v2.1 snapshot: keep the original log text unchanged inside this accordion. -->
-        <details class="version-entry version-entry--current" name="site-version">
+        <details class="version-entry" name="site-version">
           <summary class="version-summary">
             <strong>Версия 2.1</strong>
             <time datetime="2026-08-14">14 августа 2026</time>
             <span class="version-hours">5 часов</span>
-            <span>Текущая версия</span>
+            <span>Предыдущая версия</span>
             <i class="version-chevron" aria-hidden="true"></i>
           </summary>
 
           <div class="version-panel">
-            <a class="version-network-link" href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">
+            <a class="version-network-link" href="https://moving.marknpost.com/v2.1/" target="_blank" rel="noopener noreferrer">
               <span>Открыть версию 2.1 в&nbsp;сети</span>
               <i aria-hidden="true">↗</i>
             </a>
