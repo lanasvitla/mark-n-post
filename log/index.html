@@ -10,7 +10,7 @@
     <meta name="description" content="Лог изменений проекта Mark’n’Post." />
     <link rel="icon" href="../assets/marknpost-logo.svg?v=20260814-2" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../assets/marknpost-logo.png" />
-    <link rel="stylesheet" href="styles.css?v=20260814-8" />
+    <link rel="stylesheet" href="styles.css?v=20260815-1" />
   </head>
   <body>
     <header class="log-header">
@@ -19,7 +19,63 @@
 
     <main>
       <section class="version-log" aria-label="Лог версий сайта">
-        <!-- Draft version: freeze this section's text after the v2.1 push. -->
+        <!-- Draft v2.2: accumulate completed work here; freeze the text after publication. -->
+        <details class="version-entry" name="site-version">
+          <summary class="version-summary">
+            <strong>Версия 2.2</strong>
+            <time datetime="2026-08-15">15 августа 2026</time>
+            <span class="version-hours">3 часа 15 минут</span>
+            <span>Готовится к&nbsp;публикации</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
+
+          <div class="version-panel">
+            <span class="version-network-link version-network-link--pending" aria-disabled="true">
+              Сетевая версия 2.2 появится после публикации
+            </span>
+
+            <section class="changes" aria-labelledby="changes-v22-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 2.2</p>
+                <h2 id="changes-v22-title">Что изменилось</h2>
+              </div>
+
+              <div class="changes-content">
+                <p class="launch-note">Начат накопительный журнал версии 2.2. В&nbsp;него добавляются только завершенные и&nbsp;проверенные изменения текущего этапа.</p>
+
+                <ol class="change-list">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <h3>Автоматическое перенаправление HTTP → HTTPS</h3>
+                      <p>В&nbsp;GitHub Pages включен Enforce HTTPS. Запросы к&nbsp;<a href="http://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">http://moving.marknpost.com/</a> получают постоянное перенаправление 301 на&nbsp;<a href="https://moving.marknpost.com/" target="_blank" rel="noopener noreferrer">https://moving.marknpost.com/</a>; защищенная версия отвечает с&nbsp;кодом 200.</p>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <h3>Хостинг для рекламного трафика</h3>
+
+                      <details class="template-accordion" name="content-accordion">
+                        <summary>Посмотреть вывод и&nbsp;сценарий миграции</summary>
+                        <ul class="fact-list">
+                          <li>Лендинг — статический HTML/CSS/JavaScript без базы данных и&nbsp;серверной формы. FTP для размещения и&nbsp;обновлений не&nbsp;требуется.</li>
+                          <li>Ориентир до&nbsp;500 посещений в&nbsp;день является небольшой нагрузкой для статического сайта. Технической необходимости срочно переносить его из-за нагрузки нет.</li>
+                          <li>Для production-размещения перед запуском рекламного трафика выбран подходящий вариант: DigitalOcean App Platform → Static Site с&nbsp;деплоем из&nbsp;GitHub, CDN, подключением собственного домена и&nbsp;управляемым HTTPS.</li>
+                          <li>Free tier включает до&nbsp;трех приложений, состоящих только из&nbsp;static-site-компонентов, и&nbsp;1 GiB исходящего трафика на&nbsp;каждое приложение. Дополнительный трафик стоит $0.02/GiB, каждое следующее static-only приложение — $3 в&nbsp;месяц.</li>
+                          <li>Безопасная последовательность: сначала развернуть и&nbsp;проверить копию на&nbsp;служебном адресе DigitalOcean, затем подключить moving.marknpost.com и&nbsp;только после проверки заменить CNAME поддомена. До&nbsp;переключения DNS текущая версия остается доступной на&nbsp;GitHub Pages.</li>
+                        </ul>
+                        <p class="section-lead"><a href="https://docs.digitalocean.com/products/app-platform/how-to/manage-static-sites/" target="_blank" rel="noopener noreferrer">Документация DigitalOcean по&nbsp;Static Site</a> · <a href="https://docs.digitalocean.com/products/app-platform/details/pricing/" target="_blank" rel="noopener noreferrer">тарифы App Platform</a></p>
+                      </details>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <!-- Published v2.1 snapshot: keep the original log text unchanged inside this accordion. -->
         <details class="version-entry version-entry--current" name="site-version">
           <summary class="version-summary">
             <strong>Версия 2.1</strong>

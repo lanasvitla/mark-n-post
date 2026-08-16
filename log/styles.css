@@ -180,6 +180,16 @@ p {
   font-style: normal;
 }
 
+.version-network-link--pending,
+.version-network-link--pending:hover {
+  color: var(--muted);
+  border-color: var(--line);
+  background: #f7f8f9;
+  box-shadow: none;
+  transform: none;
+  cursor: default;
+}
+
 .figma-note {
   margin: 0 0 48px;
   color: var(--muted);
