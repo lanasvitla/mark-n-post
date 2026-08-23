@@ -64,9 +64,10 @@
         ]
       }
     </script>
-    <link rel="stylesheet" href="../styles.css?v=20260823-5" />
+    <link rel="stylesheet" href="../styles.css?v=20260823-12" />
     <link rel="stylesheet" href="/assets/cookie-consent.css?v=20260823-4" />
     <script src="/assets/cookie-consent.js?v=20260823-1" defer></script>
+    <script src="/assets/mobile-navigation.js?v=20260823-1" defer></script>
   </head>
   <body>
     <header class="site-header" id="top">
@@ -74,13 +75,27 @@
         <img class="brand-logo" src="../assets/marknpost-logo.svg" alt="" aria-hidden="true" />
         <span>Mark’n’Post</span>
       </a>
-      <nav class="main-nav" aria-label="Основная навигация">
-        <a href="#services">Услуги</a>
-        <a href="#directions">Направления</a>
-        <a href="#process">Как&nbsp;отправить</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#faq">Вопросы</a>
-        <a href="#contacts">Контакты</a>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        aria-label="Открыть меню"
+        data-nav-toggle
+      >
+        <span class="nav-toggle-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <nav class="main-nav" id="primary-navigation" aria-label="Основная навигация" data-mobile-nav>
+        <a href="#services-anchor">Услуги</a>
+        <a href="#directions-anchor">Направления</a>
+        <a href="#process-anchor">Как&nbsp;отправить</a>
+        <a href="#reviews-anchor">Отзывы</a>
+        <a href="#faq-anchor">Вопросы</a>
+        <a href="#contacts-anchor">Контакты</a>
       </nav>
     </header>
 
@@ -177,7 +192,7 @@
       </section>
 
       <section class="services-section" id="services" aria-labelledby="services-title">
-        <div class="section-heading">
+        <div class="section-heading nav-section-anchor" id="services-anchor">
           <p class="eyebrow">Услуги</p>
           <h2 id="services-title">От&nbsp;небольшой посылки до&nbsp;переезда</h2>
         </div>
@@ -226,7 +241,7 @@
 
       <section class="directions-section" id="directions" aria-labelledby="directions-title">
         <div class="split-layout">
-          <div>
+          <div class="nav-section-anchor" id="directions-anchor">
             <p class="eyebrow">География</p>
             <h2 id="directions-title">Куда можно отправить</h2>
           </div>
@@ -243,7 +258,7 @@
       </section>
 
       <section class="process-section" id="process" aria-labelledby="process-title">
-        <div class="section-heading">
+        <div class="section-heading nav-section-anchor" id="process-anchor">
           <p class="eyebrow">Как&nbsp;проходит отправка</p>
           <h2 id="process-title">Четыре шага до&nbsp;отправки</h2>
         </div>
@@ -314,7 +329,7 @@
 
       <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
         <div class="reviews-layout reviews-trust-layout">
-          <div class="reviews-copy reviews-trust-copy">
+          <div class="reviews-copy reviews-trust-copy nav-section-anchor" id="reviews-anchor">
             <p class="eyebrow">Отзывы</p>
             <h2 id="reviews-title">Истории, которые<br />можно проверить</h2>
             <p>Живые материалы: отправки, переезды, отзывы и&nbsp;процесс работы с&nbsp;клиентами.</p>
@@ -508,7 +523,7 @@
       </section>
 
       <section class="faq-section" id="faq" aria-labelledby="faq-title">
-        <div class="section-heading">
+        <div class="section-heading nav-section-anchor" id="faq-anchor">
           <p class="eyebrow">FAQ</p>
           <h2 id="faq-title">Частые вопросы</h2>
         </div>
@@ -537,7 +552,7 @@
       </section>
 
       <section class="final-cta" id="contacts" aria-labelledby="contacts-title">
-        <div>
+        <div class="nav-section-anchor" id="contacts-anchor">
           <p class="eyebrow">Контакты</p>
           <h2 id="contacts-title">Расскажите, что&nbsp;и&nbsp;куда нужно доставить</h2>
           <p>Напишите страну назначения, тип отправления и&nbsp;примерный вес.<br>Команда уточнит доступный вариант и&nbsp;подготовит расчет.</p>
