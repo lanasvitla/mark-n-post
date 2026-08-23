@@ -414,7 +414,7 @@ h3 + p {
 .hero-relocation-image {
   position: absolute;
   z-index: 3;
-  top: -15px;
+  top: -13px;
   left: 20px;
   width: 370px;
   max-width: none;
@@ -2000,7 +2000,7 @@ details p {
   }
 
   .hero-relocation-image {
-    top: 10px;
+    top: 12px;
     left: auto;
     right: 0;
     width: 322px;
@@ -2156,7 +2156,7 @@ details p {
   }
 
   .hero-relocation-image {
-    top: 28px;
+    top: 30px;
     width: 286px;
   }
 
@@ -2266,6 +2266,7 @@ details p {
   .hero-actions {
     display: grid;
     gap: var(--space-gap-sm);
+    margin-bottom: 60px;
   }
 
   .hero-actions .button {
@@ -2320,10 +2321,10 @@ details p {
   }
 
   .hero-relocation-image {
-    top: -10px;
+    top: -39px;
     left: auto;
     right: -10px;
-    width: 200px;
+    width: 240px;
   }
 
   .hero-usp-card {
@@ -2407,7 +2408,7 @@ details p {
 
   .quote-strip-wrap {
     transform: none;
-    margin-top: -83px;
+    margin-top: -113px;
     margin-bottom: calc(var(--mobile-form-cta-height) / -2);
   }
 
@@ -2649,7 +2650,35 @@ details p {
   }
 
   .site-footer {
+    gap: 44px;
     padding: var(--space-gap-section-content) var(--page-x) calc(40px + 10px + var(--space-gap-section-content-large));
+    font-size: 16px;
+  }
+
+  .final-cta {
+    padding-bottom: 84px;
+  }
+
+  .footer-brand {
+    gap: 14px;
+    font-size: 18px;
+  }
+
+  .footer-brand-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .footer-social {
+    gap: 14px;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+
+  .footer-social svg {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
   }
 
   .footer-meta {
@@ -2667,6 +2696,61 @@ details p {
   .footer-cta {
     display: flex;
     width: 100%;
+    min-height: 52px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 539px) {
+  .hero-actions {
+    margin-bottom: 19px;
+  }
+
+  .hero-visual,
+  .hero-visual--boxes {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .hero-relocation-image {
+    top: 2px;
+  }
+
+  .hero-usp-card {
+    top: 189px;
+  }
+
+  .quote-strip-wrap {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .site-footer {
+    padding-bottom: 120px;
+  }
+
+  .footer-copyright {
+    bottom: 77px;
+  }
+
+  .footer-credit {
+    bottom: 60px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .footer-privacy {
+    left: calc(var(--page-x) + 8px);
+    bottom: 8px;
+    transform: none;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-inline: 0;
   }
 }
 

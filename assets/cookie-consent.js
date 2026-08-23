@@ -110,18 +110,18 @@
           </svg>
           <span>Мы используем файлы cookie</span>
         </h2>
-        <p>Для&nbsp;вашего удобства пользования сайтом и&nbsp;повышения качества рекомендаций.</p>
+        <p>
+          Для&nbsp;вашего удобства пользования сайтом и&nbsp;повышения качества рекомендаций.
+          <a class="cookie-consent__details" href="/privacy/">Подробнее</a>
+        </p>
       </div>
       <div class="cookie-consent__actions">
+        <button class="cookie-consent__necessary" type="button" data-cookie-choice="necessary">
+          Только необходимые
+        </button>
         <button class="cookie-consent__button" type="button" data-cookie-choice="analytics">
           Принять и&nbsp;закрыть
         </button>
-        <div class="cookie-consent__links">
-          <button class="cookie-consent__necessary" type="button" data-cookie-choice="necessary">
-            Только необходимые
-          </button>
-          <a class="cookie-consent__details" href="/privacy/">Подробнее</a>
-        </div>
       </div>
     `;
     document.body.append(banner);
