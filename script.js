@@ -197,25 +197,23 @@ document.querySelectorAll("[data-review-gallery]").forEach((card) => {
 
 
 function initReviewMarquee(marquee) {
+  const viewport = marquee.querySelector(".review-marquee-window");
   const track = marquee.querySelector("[data-review-marquee-track]");
   const dotsHost = marquee.querySelector("[data-review-marquee-dots]");
-  if (!track || !dotsHost) return;
+  const toggle = marquee.querySelector("[data-review-marquee-toggle]");
+  if (!viewport || !track || !dotsHost || !toggle) return;
 
   const slides = Array.from(track.querySelectorAll("[data-review-slide]"));
   if (slides.length === 0) return;
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const desktopMedia = window.matchMedia("(min-width: 721px)");
+  const reduceMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const autoplaySpeed = 24;
+
   slides.forEach((slide, index) => {
     slide.dataset.reviewIndex = String(index);
-    const clone = slide.cloneNode(true);
-    clone.dataset.reviewClone = "true";
-    clone.dataset.reviewIndex = String(index);
-    clone.setAttribute("aria-hidden", "true");
-    clone.tabIndex = -1;
-    track.insertBefore(clone, slides[0]);
   });
 
-  const allSlides = () => Array.from(track.querySelectorAll("[data-review-slide]"));
   const dots = slides.map((_, index) => {
     const dot = document.createElement("button");
     dot.className = "review-marquee-dot";
@@ -225,41 +223,86 @@ function initReviewMarquee(marquee) {
     return dot;
   });
 
-  let cycleWidth = 0;
-  let firstOriginalLeft = 0;
-  let offset = 0;
   let activeIndex = 0;
-  let lastTime = null;
-  let frameId = null;
+  let autoplayFrame = null;
+  let autoplayLastTime = null;
+  let autoplayPosition = null;
+  let scrollFrame = null;
+  let focusPauseFrame = null;
+  let skipNextFocusPause = false;
+  let isVisible = false;
+  let isManuallyPaused = false;
+
+  function updateToggle() {
+    toggle.dataset.state = isManuallyPaused ? "play" : "pause";
+    toggle.setAttribute(
+      "aria-label",
+      isManuallyPaused
+        ? "Продолжить автоматическую прокрутку"
+        : "Приостановить автоматическую прокрутку",
+    );
+    toggle.hidden = reduceMotionMedia.matches || !desktopMedia.matches;
+  }
 
   function setActiveDot(nextIndex) {
     if (nextIndex === activeIndex && dots[nextIndex]?.classList.contains("is-active")) return;
     dots[activeIndex]?.classList.remove("is-active");
+    dots[activeIndex]?.removeAttribute("aria-current");
     dots[nextIndex]?.classList.add("is-active");
+    dots[nextIndex]?.setAttribute("aria-current", "true");
     activeIndex = nextIndex;
   }
 
-  function measure() {
-    const firstSlide = slides[0];
-    const lastSlide = slides[slides.length - 1];
-    firstOriginalLeft = firstSlide.offsetLeft;
-    cycleWidth = lastSlide.offsetLeft + lastSlide.offsetWidth - firstOriginalLeft;
-    offset = -firstOriginalLeft;
-    track.style.transform = `translate3d(${offset}px, 0, 0)`;
-    setActiveDot(0);
+  function orderedSlides() {
+    return Array.from(track.querySelectorAll("[data-review-slide]"));
   }
 
-  function updateActiveDot() {
-    if (!cycleWidth) return;
+  function slideTargetLeftForElement(slide) {
+    const viewportRect = viewport.getBoundingClientRect();
+    const slideRect = slide.getBoundingClientRect();
+    const paddingLeft = Number.parseFloat(window.getComputedStyle(viewport).paddingLeft) || 0;
+    return Math.max(0, viewport.scrollLeft + slideRect.left - viewportRect.left - paddingLeft);
+  }
 
+  function setScrollLeftInstant(left) {
+    const previousScrollBehavior = viewport.style.scrollBehavior;
+    viewport.style.scrollBehavior = "auto";
+    viewport.scrollLeft = Math.max(0, left);
+    viewport.style.scrollBehavior = previousScrollBehavior;
+  }
+
+  function hasEnoughContentAfter(slide) {
+    const viewportStyles = window.getComputedStyle(viewport);
+    const paddingLeft = Number.parseFloat(viewportStyles.paddingLeft) || 0;
+    const paddingRight = Number.parseFloat(viewportStyles.paddingRight) || 0;
+    const availableWidth = viewport.clientWidth - paddingLeft - paddingRight;
+    const trackRight = track.getBoundingClientRect().right;
+
+    return trackRight - slide.getBoundingClientRect().left >= availableWidth;
+  }
+
+  function rotateTrackToSlide(slide) {
+    let rotations = 0;
+
+    while (track.firstElementChild !== slide && rotations < slides.length) {
+      track.appendChild(track.firstElementChild);
+      rotations += 1;
+    }
+
+    setScrollLeftInstant(0);
+    autoplayPosition = 0;
+  }
+
+  function updateActiveDotFromScroll() {
+    const viewportRect = viewport.getBoundingClientRect();
+    const paddingLeft = Number.parseFloat(window.getComputedStyle(viewport).paddingLeft) || 0;
+    const targetX = viewportRect.left + paddingLeft;
     let nextIndex = activeIndex;
     let closest = Number.POSITIVE_INFINITY;
 
-    allSlides().forEach((slide) => {
-      const index = Number(slide.dataset.reviewIndex);
-      const x = slide.offsetLeft + offset;
-      const distance = Math.abs(x);
-      if (Number.isInteger(index) && distance < closest) {
+    slides.forEach((slide, index) => {
+      const distance = Math.abs(slide.getBoundingClientRect().left - targetX);
+      if (distance < closest) {
         closest = distance;
         nextIndex = index;
       }
@@ -268,50 +311,170 @@ function initReviewMarquee(marquee) {
     setActiveDot(nextIndex);
   }
 
-  function render(time) {
-    if (lastTime === null) lastTime = time;
-    const delta = time - lastTime;
-    lastTime = time;
+  function goToSlide(index, behavior = "smooth") {
+    const safeIndex = Math.max(0, Math.min(index, slides.length - 1));
+    const targetSlide = slides[safeIndex];
 
-    offset += delta * 0.012;
-    if (offset >= 0) offset = -cycleWidth;
-    track.style.transform = `translate3d(${offset}px, 0, 0)`;
-    updateActiveDot();
-    frameId = window.requestAnimationFrame(render);
+    if (!hasEnoughContentAfter(targetSlide)) {
+      rotateTrackToSlide(targetSlide);
+      setActiveDot(safeIndex);
+      return;
+    }
+
+    viewport.scrollTo({
+      left: slideTargetLeftForElement(targetSlide),
+      behavior: reduceMotionMedia.matches ? "auto" : behavior,
+    });
+    setActiveDot(safeIndex);
   }
 
-  function start() {
-    if (reduceMotion || frameId || !cycleWidth) return;
-    lastTime = null;
-    frameId = window.requestAnimationFrame(render);
+  function stopAutoplay() {
+    if (autoplayFrame !== null) window.cancelAnimationFrame(autoplayFrame);
+    autoplayFrame = null;
+    autoplayLastTime = null;
+    autoplayPosition = null;
+    marquee.classList.remove("is-autoplaying");
   }
 
-  function stop() {
-    if (!frameId) return;
-    window.cancelAnimationFrame(frameId);
-    frameId = null;
+  function canAutoplay() {
+    return desktopMedia.matches
+      && !reduceMotionMedia.matches
+      && !document.hidden
+      && isVisible
+      && !isManuallyPaused;
+  }
+
+  function recyclePassedSlides() {
+    const viewportRect = viewport.getBoundingClientRect();
+    const paddingLeft = Number.parseFloat(window.getComputedStyle(viewport).paddingLeft) || 0;
+    const targetX = viewportRect.left + paddingLeft;
+    let rotations = 0;
+
+    while (rotations < slides.length) {
+      const firstSlide = track.firstElementChild;
+      const nextSlide = firstSlide?.nextElementSibling;
+      if (!firstSlide || !nextSlide || firstSlide.getBoundingClientRect().right > targetX) break;
+
+      const nextLeftBefore = nextSlide.getBoundingClientRect().left;
+      track.appendChild(firstSlide);
+      const nextLeftAfter = nextSlide.getBoundingClientRect().left;
+      setScrollLeftInstant(viewport.scrollLeft + nextLeftAfter - nextLeftBefore);
+      autoplayPosition = viewport.scrollLeft;
+      rotations += 1;
+    }
+
+  }
+
+  function renderAutoplay(time) {
+    if (!canAutoplay()) {
+      stopAutoplay();
+      return;
+    }
+
+    if (autoplayLastTime === null) autoplayLastTime = time;
+    if (autoplayPosition === null) autoplayPosition = viewport.scrollLeft;
+    const delta = Math.min(64, time - autoplayLastTime);
+    autoplayLastTime = time;
+
+    autoplayPosition += (delta / 1000) * autoplaySpeed;
+    viewport.scrollLeft = autoplayPosition;
+    recyclePassedSlides();
+    autoplayFrame = window.requestAnimationFrame(renderAutoplay);
+  }
+
+  function scheduleAutoplay() {
+    stopAutoplay();
+    if (!canAutoplay()) return;
+
+    marquee.classList.add("is-autoplaying");
+    autoplayFrame = window.requestAnimationFrame(renderAutoplay);
+  }
+
+  function setManualPause(nextValue) {
+    isManuallyPaused = nextValue;
+    updateToggle();
+    scheduleAutoplay();
   }
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      if (!cycleWidth) return;
-      offset = -slides[index].offsetLeft;
-      track.style.transform = `translate3d(${offset}px, 0, 0)`;
-      setActiveDot(index);
-      lastTime = null;
+      setManualPause(true);
+      goToSlide(index);
     });
   });
 
-  window.requestAnimationFrame(() => {
-    measure();
-    start();
+  toggle.addEventListener("pointerdown", () => {
+    skipNextFocusPause = true;
   });
 
-  window.addEventListener("resize", () => {
-    stop();
-    measure();
-    start();
+  toggle.addEventListener("pointercancel", () => {
+    skipNextFocusPause = false;
   });
+
+  toggle.addEventListener("click", () => {
+    skipNextFocusPause = true;
+    setManualPause(!isManuallyPaused);
+    window.requestAnimationFrame(() => {
+      skipNextFocusPause = false;
+    });
+  });
+
+  viewport.addEventListener("scroll", () => {
+    if (scrollFrame !== null) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = null;
+      updateActiveDotFromScroll();
+    });
+  }, { passive: true });
+
+  viewport.addEventListener("wheel", (event) => {
+    const isHorizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    if (desktopMedia.matches && isHorizontalIntent) setManualPause(true);
+  }, { passive: true });
+
+  viewport.addEventListener("pointerdown", (event) => {
+    if (desktopMedia.matches && event.pointerType !== "touch") setManualPause(true);
+  }, { passive: true });
+
+  marquee.addEventListener("focusin", () => {
+    if (focusPauseFrame !== null) window.cancelAnimationFrame(focusPauseFrame);
+    focusPauseFrame = window.requestAnimationFrame(() => {
+      focusPauseFrame = null;
+      if (!skipNextFocusPause) setManualPause(true);
+    });
+  });
+
+  const visibilityObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+      isVisible = entries.some((entry) => entry.isIntersecting);
+      scheduleAutoplay();
+    }, { threshold: 0.1 })
+    : null;
+
+  if (visibilityObserver) visibilityObserver.observe(marquee);
+  else isVisible = true;
+
+  document.addEventListener("visibilitychange", scheduleAutoplay);
+
+  window.addEventListener("resize", () => {
+    goToSlide(activeIndex, "auto");
+    updateToggle();
+    scheduleAutoplay();
+  });
+
+  desktopMedia.addEventListener("change", () => {
+    goToSlide(activeIndex, "auto");
+    scheduleAutoplay();
+  });
+
+  reduceMotionMedia.addEventListener("change", () => {
+    updateToggle();
+    scheduleAutoplay();
+  });
+
+  setActiveDot(0);
+  updateToggle();
+  scheduleAutoplay();
 }
 
 document.querySelectorAll("[data-review-marquee]").forEach(initReviewMarquee);

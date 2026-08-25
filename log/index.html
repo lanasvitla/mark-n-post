@@ -20,6 +20,68 @@
 
     <main>
       <section class="version-log" aria-label="Лог версий сайта">
+        <!-- Draft v3.0: completed changes only, not published. -->
+        <details class="version-entry" name="site-version" open>
+          <summary class="version-summary">
+            <strong>Версия 3.0</strong>
+            <time datetime="2026-08-25T13:38:00+04:00">25 августа 2026, 13:38 (Тбилиси)</time>
+            <span class="version-hours">5 часов</span>
+            <span>В работе</span>
+            <i class="version-chevron" aria-hidden="true"></i>
+          </summary>
+
+          <div class="version-panel">
+            <section class="changes" aria-labelledby="changes-v30-title">
+              <div class="changes-heading">
+                <p class="eyebrow">Версия 3.0</p>
+                <h2 id="changes-v30-title">Что изменилось</h2>
+              </div>
+
+              <div class="changes-content">
+                <ol class="change-list">
+                  <li>
+                    <span>01</span>
+                    <div>
+                      <h3>Оптимизация изображений</h3>
+                      <ul class="fact-list">
+                        <li>Изображения переведены в&nbsp;WebP, тяжелые исходные PNG исключены из&nbsp;публикуемой версии. PNG-копии логотипа сохранены для Apple touch icon и&nbsp;совместимого отображения превью в&nbsp;социальных сетях.</li>
+                        <li>Общий вес изображений сокращен с&nbsp;32,82 до&nbsp;1,93&nbsp;МБ&nbsp;– на&nbsp;94,1%.</li>
+                        <li>Вес изображений блока отзывов сокращен с&nbsp;12,90 до&nbsp;0,83&nbsp;МБ.</li>
+                        <li>Подключена отложенная загрузка изображений (lazy loading).</li>
+                        <li>На&nbsp;десктопе настроена автопрокрутка с&nbsp;паузой и&nbsp;остановкой вне области просмотра.</li>
+                        <li>На&nbsp;мобильных устройствах добавлен ручной свайп карусели отзывов.</li>
+                        <li>В&nbsp;блок «Услуги» добавлены оптимизированные 3D-иконки с&nbsp;графическими акцентами в&nbsp;стиле изображения на&nbsp;первом экране и&nbsp;фирменная иллюстрация кота.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div>
+                      <h3>Блок отзывов</h3>
+                      <ul class="fact-list">
+                        <li>Карточки источников отзывов обновлены: строки рейтинга приведены к&nbsp;стилю первого экрана.</li>
+                        <li>Карусель материалов переведена на&nbsp;бесшовный цикл без дублирования карточек.</li>
+                        <li>Автопрокрутка запускается только при&nbsp;появлении блока в&nbsp;области просмотра; в&nbsp;навигацию добавлено компактное управление паузой и&nbsp;продолжением.</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div>
+                      <h3>Оптимизация блоков</h3>
+                      <ul class="fact-list">
+                        <li>Отдельный блок «О&nbsp;компании» удален. Информация из&nbsp;него перенесена в&nbsp;верхнюю часть блока «Услуги».</li>
+                        <li>Карточки услуг перестроены в&nbsp;адаптивную сетку: на&nbsp;десктопе блоки собраны в&nbsp;два равных ряда по&nbsp;три карточки.</li>
+                        <li>Отдельный блок «География» удален, а&nbsp;информация из&nbsp;него перенесена в&nbsp;заключительный блок заявки. Там добавлена строка «Куда еще доставим» с&nbsp;чипсами «Сербия», «Испания», «Португалия» и&nbsp;«Страны СНГ».</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+          </div>
+        </details>
+
         <!-- Published v2.2.3: keep this text unchanged after publication. -->
         <details class="version-entry version-entry--current" name="site-version">
           <summary class="version-summary">
