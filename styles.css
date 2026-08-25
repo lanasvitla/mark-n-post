@@ -40,9 +40,9 @@
   --process-title-min-height: 58px;
   --process-text-min-height: 96px;
   --process-photo-height: 186px;
-  --request-field-height: 150px;
-  --request-mobile-field-height: 126px;
-  --request-submit-height: 82px;
+  --request-field-height: 105px;
+  --request-mobile-field-height: 88.2px;
+  --request-submit-height: 72px;
   --quote-submit-width: 184px;
   --mobile-header-cta-height: 48px;
   --mobile-form-cta-height: 64px;
@@ -683,7 +683,12 @@ h3 + p {
   align-self: start;
   min-height: 28px;
   line-height: 1.28;
-  resize: vertical;
+}
+
+.request-form textarea {
+  height: 57px;
+  min-height: 57px;
+  resize: none;
 }
 
 .field select {
@@ -957,7 +962,7 @@ h3 + p {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 24px;
   overflow: hidden;
   padding: 24px;
   isolation: isolate;
@@ -995,8 +1000,9 @@ h3 + p {
 
 .service-contact-card__image {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  /* The visible white stroke begins one source pixel inside the 160 px rendering. */
+  right: calc(30px - 0.4px);
+  bottom: calc(30px - 0.4px);
   z-index: 0;
   display: block;
   width: 160px;
@@ -1061,18 +1067,36 @@ h3 + p {
 }
 
 .process-list li {
+  position: relative;
   min-height: var(--process-card-min-height);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   padding: 24px;
+  isolation: isolate;
   background: #fff;
 }
 
 .process-index {
+  position: absolute;
+  top: -44px;
+  left: -8px;
+  z-index: 0;
   display: block;
-  margin-bottom: 34px;
+  margin: 0;
   color: var(--cyan-dark);
+  font-size: 170px;
+  line-height: 1;
   font-weight: 800;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.process-list h3,
+.process-list p {
+  position: relative;
+  z-index: 1;
 }
 
 .process-list h3 {
@@ -1974,16 +1998,16 @@ h3 + p {
   grid-template-rows: repeat(2, minmax(var(--request-field-height), auto)) var(--request-submit-height);
   gap: var(--space-gap-divider);
   background: var(--line);
-  padding: var(--space-gap-divider);
-  border: 0;
-  border-radius: var(--radius-button);
+  padding: 0;
+  border: var(--border-width-default) solid var(--line);
+  border-radius: var(--radius-card);
   overflow: hidden;
 }
 
 .request-form button {
   grid-column: 1 / -1;
   min-height: var(--request-submit-height);
-  border-radius: 0 0 var(--radius-button) var(--radius-button);
+  border-radius: 0;
 }
 
 .faq-list {
@@ -2257,6 +2281,10 @@ details p {
 }
 
 @media (max-width: 1120px) {
+  :root {
+    --request-submit-height: 74px;
+  }
+
   .main-nav {
     display: none;
     position: absolute;
@@ -2424,7 +2452,6 @@ details p {
   .service-contact-card {
     min-height: 270px;
     justify-content: center;
-    gap: var(--space-action-gap);
   }
 
   .service-contact-card .button {
@@ -2756,7 +2783,6 @@ details p {
 
   .service-contact-card {
     min-height: 0;
-    gap: var(--space-action-gap);
     padding: 24px;
   }
 
@@ -2837,8 +2863,8 @@ details p {
   }
 
   .request-form textarea {
-    height: 58px;
-    min-height: 58px;
+    height: 38px;
+    min-height: 38px;
     resize: none;
   }
 
@@ -2873,7 +2899,9 @@ details p {
   }
 
   .process-index {
-    margin-bottom: 32px;
+    top: -34px;
+    left: -6px;
+    font-size: 136px;
   }
 
   .process-list h3,
