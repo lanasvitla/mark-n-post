@@ -36,7 +36,7 @@
   --hero-action-proof-gap: 70px;
   --space-panel-padding: 26px;
   --task-title-min-height: 68px;
-  --process-card-min-height: 308px;
+  --process-card-bottom-gap: 100px;
   --process-title-min-height: 58px;
   --process-text-min-height: 96px;
   --process-photo-height: 186px;
@@ -798,8 +798,12 @@ h3 + p {
 
 .copy-stack {
   color: #333;
+}
+
+.section-intro {
+  color: #383838;
   font-size: 18px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .copy-stack p {
@@ -1068,11 +1072,11 @@ h3 + p {
 
 .process-list li {
   position: relative;
-  min-height: var(--process-card-min-height);
+  min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px 24px var(--process-card-bottom-gap);
   isolation: isolate;
   background: #fff;
 }
@@ -1109,7 +1113,7 @@ h3 + p {
 
 .process-list li > p:not(.process-contact) {
   min-height: var(--process-text-min-height);
-  margin-bottom: 18px;
+  margin-bottom: 0;
 }
 
 .process-contact {
@@ -1291,9 +1295,13 @@ h3 + p {
 
 .packing-section {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   gap: 70px;
   align-items: start;
+}
+
+.packing-description span {
+  display: block;
 }
 
 .packing-action {
@@ -1420,9 +1428,6 @@ h3 + p {
 
 .reviews-copy > p {
   margin: 0;
-  color: var(--ink);
-  font-size: 20px;
-  line-height: 1.45;
 }
 
 .reviews-trust-copy {
@@ -1437,25 +1442,8 @@ h3 + p {
   margin: 0;
 }
 
-.reviews-trust-copy .eyebrow {
-  color: #0080a3;
-  font-size: 13px;
-  line-height: 17px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.reviews-trust-copy h2 {
-  font-size: 42px;
-  line-height: 1.024;
-  font-weight: 800;
-}
-
 .reviews-trust-copy > p {
   max-width: 480px;
-  color: #383838;
-  font-size: 18px;
-  line-height: 1.5;
 }
 
 .review-source-cards {
@@ -2282,6 +2270,7 @@ details p {
 
 @media (max-width: 1120px) {
   :root {
+    --process-card-bottom-gap: 80px;
     --request-submit-height: 74px;
   }
 
@@ -2487,11 +2476,6 @@ details p {
     gap: 30px;
   }
 
-  .copy-stack {
-    font-size: 16px;
-    line-height: 1.55;
-  }
-
   .packing-section {
     gap: var(--space-gap-section-content-large);
   }
@@ -2560,6 +2544,7 @@ details p {
 @media (max-width: 720px) {
   :root {
     --page-x: 18px;
+    --process-card-bottom-gap: 60px;
     --task-title-min-height: 63px;
   }
 
@@ -2895,7 +2880,7 @@ details p {
 
   .process-list li {
     min-height: 0;
-    padding: 32px 28px;
+    padding: 32px 28px var(--process-card-bottom-gap);
   }
 
   .process-index {
@@ -2963,7 +2948,7 @@ details p {
     max-width: none;
   }
 
-  .reviews-copy > p {
+  .section-intro {
     font-size: 17px;
   }
 
