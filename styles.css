@@ -36,7 +36,7 @@
   --hero-action-proof-gap: 70px;
   --space-panel-padding: 26px;
   --task-title-min-height: 68px;
-  --process-card-bottom-gap: 100px;
+  --process-card-bottom-gap: 60px;
   --process-title-min-height: 58px;
   --process-text-min-height: 96px;
   --process-photo-height: 186px;
@@ -1112,8 +1112,9 @@ h3 + p {
 }
 
 .process-list li > p:not(.process-contact) {
-  min-height: var(--process-text-min-height);
+  margin-top: auto;
   margin-bottom: 0;
+  padding-top: var(--subheading-text-gap);
 }
 
 .process-contact {
@@ -2270,7 +2271,6 @@ details p {
 
 @media (max-width: 1120px) {
   :root {
-    --process-card-bottom-gap: 80px;
     --request-submit-height: 74px;
   }
 
@@ -2544,7 +2544,6 @@ details p {
 @media (max-width: 720px) {
   :root {
     --page-x: 18px;
-    --process-card-bottom-gap: 60px;
     --task-title-min-height: 63px;
   }
 
@@ -2895,8 +2894,8 @@ details p {
     min-height: 0;
   }
 
-  .process-list h3 + p {
-    margin-top: 18px;
+  .process-list li > p:not(.process-contact) {
+    padding-top: 18px;
   }
 
   .process-photo {
