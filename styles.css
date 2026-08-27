@@ -920,6 +920,11 @@ h3 + p {
   isolation: isolate;
 }
 
+.service-card,
+.service-contact-card {
+  transition: box-shadow 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .service-card__copy {
   position: relative;
   z-index: 1;
@@ -1015,6 +1020,26 @@ h3 + p {
   object-fit: contain;
   pointer-events: none;
   user-select: none;
+}
+
+.service-card__image,
+.service-contact-card__image {
+  transform-origin: right bottom;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover,
+  .service-contact-card:hover {
+    box-shadow:
+      0 18px 42px rgba(20, 32, 40, 0.075),
+      0 3px 10px rgba(20, 32, 40, 0.045);
+  }
+
+  .service-card:hover .service-card__image,
+  .service-contact-card:hover .service-contact-card__image {
+    transform: scale(1.035);
+  }
 }
 
 .directions-panel {
@@ -1160,11 +1185,15 @@ h3 + p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 280ms ease;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .process-list li:hover .process-photo img {
+  .process-photo:hover img,
+  .process-section:has(.process-list li:nth-child(1):hover) .process-photo:nth-child(1) img,
+  .process-section:has(.process-list li:nth-child(2):hover) .process-photo:nth-child(2) img,
+  .process-section:has(.process-list li:nth-child(3):hover) .process-photo:nth-child(3) img,
+  .process-section:has(.process-list li:nth-child(4):hover) .process-photo:nth-child(4) img {
     transform: scale(1.03);
   }
 }
@@ -2771,17 +2800,35 @@ details p {
   }
 
   .service-grid .service-card {
-    min-height: 238px;
-    padding: 24px;
+    min-height: 180px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(118px, 32vw, 150px);
+    align-items: center;
+    gap: 8px;
+    padding: 18px;
   }
 
   .service-card__copy {
-    max-width: 72%;
+    max-width: none;
+  }
+
+  .service-grid h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.18;
+  }
+
+  .service-grid p {
+    font-size: 15px;
+    line-height: 1.38;
   }
 
   .service-card__image {
-    right: 4px;
-    width: 148px;
+    position: static;
+    width: 100%;
+    max-width: 150px;
+    justify-self: end;
+    align-self: center;
   }
 
   .final-cta-description span {
@@ -3121,6 +3168,17 @@ details p {
 }
 
 @media (max-width: 390px) {
+  .service-grid .service-card {
+    min-height: 176px;
+    grid-template-columns: minmax(0, 1fr) 104px;
+    gap: 6px;
+    padding: 16px;
+  }
+
+  .service-card__image {
+    max-width: 104px;
+  }
+
   .site-footer {
     padding-bottom: 120px;
   }
@@ -3149,6 +3207,18 @@ details p {
   }
 }
 
+@media (max-width: 330px) {
+  .service-grid .service-card {
+    min-height: 174px;
+    grid-template-columns: minmax(0, 1fr) 96px;
+    padding: 14px;
+  }
+
+  .service-card__image {
+    max-width: 96px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-toggle-icon span {
     transition: none;
@@ -3162,6 +3232,11 @@ details p {
   .packing-list-order,
   .hero-relocation-image,
   .moving-note-image,
+  .service-card,
+  .service-contact-card,
+  .service-card__image,
+  .service-contact-card__image,
+  .process-photo img,
   .review-source-card,
   .review-marquee-proof,
   .review-marquee-telegram,
@@ -3170,6 +3245,16 @@ details p {
   .review-marquee-dot::before,
   .review-marquee-toggle {
     transition: none;
+  }
+
+  .service-card:hover .service-card__image,
+  .service-contact-card:hover .service-contact-card__image {
+    transform: none;
+  }
+
+  .process-photo:hover img,
+  .process-section:has(.process-list li:hover) .process-photo img {
+    transform: none !important;
   }
 
   .packing-list li:hover img,
