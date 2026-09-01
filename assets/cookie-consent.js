@@ -1,7 +1,6 @@
 (() => {
-  const storageKey = "marknpost_cookie_consent_v1";
-  const analyticsChoice = "analytics";
-  const necessaryChoice = "necessary";
+  const storageKey = "marknpost_cookie_notice_ack_v1";
+  const acknowledgedValue = "acknowledged";
   const gtmId = "GTM-TQNMDCQS";
   const yandexId = 111840782;
 
@@ -12,27 +11,25 @@
   }
 
   gtag("consent", "default", {
-    analytics_storage: "denied",
+    analytics_storage: "granted",
     ad_storage: "denied",
     ad_user_data: "denied",
     ad_personalization: "denied",
     functionality_storage: "granted",
     security_storage: "granted",
-    wait_for_update: 500,
   });
 
-  function readChoice() {
+  function isAcknowledged() {
     try {
-      const choice = window.localStorage.getItem(storageKey);
-      return choice === analyticsChoice || choice === necessaryChoice ? choice : null;
+      return window.localStorage.getItem(storageKey) === acknowledgedValue;
     } catch {
-      return null;
+      return false;
     }
   }
 
-  function saveChoice(choice) {
+  function saveAcknowledgement() {
     try {
-      window.localStorage.setItem(storageKey, choice);
+      window.localStorage.setItem(storageKey, acknowledgedValue);
     } catch {
       return false;
     }
@@ -79,15 +76,9 @@
     });
   }
 
-  function enableAnalytics() {
+  function loadAnalytics() {
     if (window.__marknpostAnalyticsLoaded) return;
     window.__marknpostAnalyticsLoaded = true;
-    gtag("consent", "update", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
     loadGoogleTagManager();
     loadYandexMetrika();
   }
@@ -108,33 +99,31 @@
             <circle cx="15.1" cy="19.7" r="1.7" />
             <circle cx="8.5" cy="22.4" r="1.2" />
           </svg>
-          <span>Мы используем файлы cookie</span>
+          <span>Cookie и&nbsp;аналитика</span>
         </h2>
         <p>
-          Для&nbsp;вашего удобства пользования сайтом и&nbsp;повышения качества рекомендаций.
-          <a class="cookie-consent__details" href="/privacy/">Подробнее</a>
+          <span class="cookie-consent__message">На&nbsp;сайте используются cookie и&nbsp;системы аналитики для&nbsp;работы сайта и&nbsp;оценки эффективности.</span>
+          <span class="cookie-consent__details-line">Подробнее&nbsp;– в&nbsp;<a
+              class="cookie-consent__details"
+              href="/privacy/"
+            >Политике конфиденциальности</a>.</span>
         </p>
       </div>
       <div class="cookie-consent__actions">
-        <button class="cookie-consent__necessary" type="button" data-cookie-choice="necessary">
-          Только необходимые
-        </button>
-        <button class="cookie-consent__button" type="button" data-cookie-choice="analytics">
-          Принять и&nbsp;закрыть
+        <button class="cookie-consent__button" type="button" data-cookie-acknowledge>
+          Понятно
         </button>
       </div>
     `;
     document.body.append(banner);
 
-    const acceptButton = banner.querySelector('[data-cookie-choice="analytics"]');
-    const necessaryButton = banner.querySelector('[data-cookie-choice="necessary"]');
+    const acknowledgeButton = banner.querySelector("[data-cookie-acknowledge]");
     let closeTimer = null;
 
-    function showBanner(focusChoice = false) {
+    function showBanner() {
       window.clearTimeout(closeTimer);
       banner.hidden = false;
       window.requestAnimationFrame(() => banner.classList.add("is-visible"));
-      if (focusChoice) acceptButton.focus();
     }
 
     function hideBanner() {
@@ -144,46 +133,20 @@
       }, 220);
     }
 
-    function applyChoice(choice) {
-      const analyticsWasLoaded = Boolean(window.__marknpostAnalyticsLoaded);
-      saveChoice(choice);
-
-      if (choice === analyticsChoice) {
-        enableAnalytics();
-      } else {
-        gtag("consent", "update", {
-          analytics_storage: "denied",
-          ad_storage: "denied",
-          ad_user_data: "denied",
-          ad_personalization: "denied",
-        });
-      }
-
+    function acknowledgeNotice() {
+      saveAcknowledgement();
       hideBanner();
-      window.dispatchEvent(new CustomEvent("marknpost:cookie-consent", {
-        detail: { choice },
-      }));
-      if (choice === necessaryChoice && analyticsWasLoaded) {
-        window.setTimeout(() => window.location.reload(), 230);
-      }
+      window.dispatchEvent(new CustomEvent("marknpost:cookie-notice-acknowledged"));
     }
 
-    acceptButton.addEventListener("click", () => applyChoice(analyticsChoice));
-    necessaryButton.addEventListener("click", () => applyChoice(necessaryChoice));
+    acknowledgeButton.addEventListener("click", acknowledgeNotice);
 
-    document.querySelectorAll("[data-cookie-settings]").forEach((button) => {
-      button.addEventListener("click", () => showBanner(true));
-    });
-
-    const settingsRequested = new URLSearchParams(window.location.search).has("cookie-settings");
-    if (settingsRequested) {
-      showBanner(true);
-    } else if (!readChoice()) {
+    if (!isAcknowledged()) {
       showBanner();
     }
   }
 
-  if (readChoice() === analyticsChoice) enableAnalytics();
+  loadAnalytics();
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", createBanner, { once: true });

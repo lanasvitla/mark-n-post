@@ -61,11 +61,21 @@
 }
 
 .cookie-consent p {
-  max-width: 590px;
+  width: 100%;
+  max-width: none;
   margin: 0;
   color: var(--muted, #626262);
   font-size: 13px;
   line-height: 1.35;
+}
+
+.cookie-consent__message,
+.cookie-consent__details-line {
+  display: block;
+}
+
+.cookie-consent__details-line {
+  margin-top: 2px;
 }
 
 .cookie-consent a {
@@ -87,7 +97,7 @@
   border: 1px solid var(--line, #d8dde2);
   border-radius: 6px;
   color: #ffffff;
-  background: var(--ink, #181818);
+  background: var(--cyan-dark, #087a99);
   font: inherit;
   font-size: 12.5px;
   line-height: 1.2;
@@ -98,17 +108,16 @@
 
 .cookie-consent__button:hover {
   color: #ffffff;
-  background: var(--red, #ee0012);
-  border-color: var(--red, #ee0012);
+  background: var(--cyan, #2ca4c6);
+  border-color: var(--cyan, #2ca4c6);
 }
 
 .cookie-consent__button:focus-visible {
-  outline: 2px solid var(--red, #ee0012);
+  outline: 2px solid var(--cyan-dark, #087a99);
   outline-offset: 2px;
 }
 
-.cookie-consent .cookie-consent__details,
-.cookie-consent__necessary {
+.cookie-consent .cookie-consent__details {
   color: var(--muted, #626262);
   background: transparent;
   border: 0;
@@ -124,52 +133,13 @@
 }
 
 .cookie-consent .cookie-consent__details {
-  display: block;
-  width: max-content;
-  margin-top: 4px;
-  margin-left: 0;
+  display: inline;
   padding: 0;
 }
 
-.cookie-consent__necessary {
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-}
-
-.cookie-consent__necessary:hover,
-.cookie-consent__necessary:focus-visible,
 .cookie-consent__details:hover,
 .cookie-consent__details:focus-visible {
   color: var(--ink, #181818);
-}
-
-.cookie-settings-button {
-  min-height: 48px;
-  padding: 11px 16px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  font: inherit;
-  font-size: 14px;
-  line-height: 1.2;
-  font-weight: 750;
-  cursor: pointer;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
-}
-
-.cookie-settings-button {
-  margin-top: 20px;
-  color: var(--ink, #181818);
-  background: #ffffff;
-  border-color: var(--ink, #181818);
-}
-
-.cookie-settings-button:hover,
-.cookie-settings-button:focus-visible {
-  color: #ffffff;
-  background: var(--ink, #181818);
 }
 
 @media (max-width: 760px) {
@@ -207,9 +177,7 @@
 
   .cookie-consent__actions {
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 16px;
+    display: flex;
     align-items: center;
     justify-content: start;
     justify-self: stretch;
@@ -219,11 +187,6 @@
     min-height: 44px;
     padding: 7px 10px;
     font-size: 12px;
-    order: 1;
-  }
-
-  .cookie-consent__necessary {
-    order: 2;
   }
 }
 
@@ -249,27 +212,9 @@
   }
 }
 
-@media (max-width: 359px) {
-  .cookie-consent__actions {
-    grid-template-columns: 1fr;
-    gap: 2px;
-    justify-items: start;
-  }
-
-  .cookie-consent__button {
-    order: 1;
-  }
-
-  .cookie-consent__necessary {
-    order: 2;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cookie-consent,
-  .cookie-consent__button,
-  .cookie-consent__necessary,
-  .cookie-settings-button {
+  .cookie-consent__button {
     transition: none;
   }
 }
