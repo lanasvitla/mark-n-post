@@ -3398,3 +3398,8 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 @media (min-width: 1121px) {
   .hero-visual.hero-visual--boxes { top: calc(-1 * var(--hero-action-proof-gap)); }
 }
+
+/* Rebalance request form whitespace after the review. */
+.request-form .request-details textarea { height: 76px; min-height: 76px; }
+.request-form label:has(input[name="request-weight"]),
+.request-form label:has(input[name="contact"]) { padding-bottom: 30px; }
