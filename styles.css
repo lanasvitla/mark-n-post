@@ -3394,3 +3394,7 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 @media (max-width: 1120px) {
   .hero-visual--boxes .hero-usp-card { padding-bottom: calc(5cqw + 12px); }
 }
+
+@media (min-width: 1121px) {
+  .hero-visual.hero-visual--boxes { top: calc(-1 * var(--hero-action-proof-gap)); }
+}
