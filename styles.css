@@ -3374,3 +3374,9 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
   .hero-visual--boxes .hero-usp-card strong { font-size: 7.08cqw; }
   .quote-strip-wrap { margin-top: 24px; }
 }
+
+/* Updated badge artwork, 30% smaller at the same top-right anchor. */
+.service-card__badge { width: 67.2px; height: 67.2px; }
+@media (max-width: 767px) {
+  .service-card__badge { width: 56px; height: 56px; }
+}
