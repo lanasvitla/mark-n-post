@@ -3309,3 +3309,6 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
   .hero-usp-card strong { font-size: clamp(15px, 3.8vw, 24px); }
   #moving-title { font-size: clamp(18px, 4.4vw, 30px); }
 }
+
+/* Keep the suitcase illustration clear of the relocation copy. */
+.service-card--relocations .service-card__image { scale: 0.9; transform-origin: bottom right; }
