@@ -3331,3 +3331,40 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 @media (max-width: 767px) {
   .service-card__badge { width: 80px; height: 80px; top: -26px; right: 12px; }
 }
+
+/* Suitcases hero: the cut line meets the panel while hands overlap it. */
+.hero-visual.hero-visual--boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  width: 428px;
+  height: auto;
+  min-height: 0;
+  container-type: inline-size;
+}
+.hero-visual--boxes .hero-relocation-image {
+  position: relative;
+  top: auto; left: auto; right: auto;
+  width: calc(100% - 32px);
+  height: auto;
+  margin-bottom: calc(-4.5666cqw + 1.46px);
+  flex-shrink: 0;
+}
+.hero-visual--boxes .hero-usp-card {
+  position: relative;
+  top: auto; left: auto;
+  width: 100%; min-width: 0;
+  height: auto; min-height: 0;
+  padding: 28px 24px;
+}
+.hero-visual--boxes .hero-usp-card strong {
+  max-width: none;
+  font-size: 6.1cqw;
+  line-height: 1.15;
+}
+@media (max-width: 1120px) {
+  .hero-visual.hero-visual--boxes { width: 100%; }
+  .hero-visual--boxes .hero-usp-card { padding: 5cqw 4cqw; }
+  .hero-visual--boxes .hero-usp-card p { font-size: clamp(12px, 2.8cqw, 24px); }
+}
