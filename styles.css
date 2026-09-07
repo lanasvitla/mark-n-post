@@ -3380,3 +3380,17 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 @media (max-width: 767px) {
   .service-card__badge { width: 56px; height: 56px; }
 }
+
+/* Compact hero artwork: 20% less inset, taller panel, aligned to ratings. */
+.hero-visual--boxes .hero-relocation-image {
+  width: calc(100% - 25.6px);
+  margin-bottom: calc(-4.7161cqw + 1.2073px);
+}
+.hero-visual--boxes .hero-usp-card { padding-bottom: 40px; }
+.hero-visual--boxes .hero-usp-card p { text-transform: none; }
+@media (min-width: 1121px) {
+  .hero-visual.hero-visual--boxes { align-self: end; }
+}
+@media (max-width: 1120px) {
+  .hero-visual--boxes .hero-usp-card { padding-bottom: calc(5cqw + 12px); }
+}
