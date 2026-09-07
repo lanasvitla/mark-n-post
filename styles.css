@@ -3287,3 +3287,25 @@ details p {
   }
 
 }
+
+/* Stage 4 typography and form layout */
+.hero-copy .lead { max-width: 660px; text-wrap: pretty; }
+.lead-return { display: block; }
+.slogan-line { display: block; }
+.hero-usp-card { padding-right: 24px; }
+.hero-usp-card strong { max-width: none; font-size: clamp(18px, 2vw, 26px); line-height: 1.15; }
+.hero-usp-card .slogan-line { white-space: nowrap; }
+#moving-title { font-size: clamp(23px, 3.4vw, 44px); }
+#moving-title .slogan-line { white-space: nowrap; }
+input[data-focus-placeholder]::placeholder { opacity: 0; }
+input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
+.request-form { grid-template-rows: auto; grid-auto-rows: auto; }
+.request-form .request-details { grid-column: 1 / -1; }
+.request-form .request-details textarea { min-height: 100px; height: auto; resize: vertical; }
+.section-intro, .service-card p, .moving-section p, .faq-list p { text-wrap: pretty; }
+@media (max-width: 767px) {
+  .hero-copy .lead { max-width: 100%; }
+  .lead-return { display: inline; }
+  .hero-usp-card strong { font-size: clamp(15px, 3.8vw, 24px); }
+  #moving-title { font-size: clamp(18px, 4.4vw, 30px); }
+}
