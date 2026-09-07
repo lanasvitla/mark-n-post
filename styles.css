@@ -3368,3 +3368,9 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
   .hero-visual--boxes .hero-usp-card { padding: 5cqw 4cqw; }
   .hero-visual--boxes .hero-usp-card p { font-size: clamp(12px, 2.8cqw, 24px); }
 }
+
+.hero-visual--boxes .hero-usp-card strong { font-size: calc((100cqw - 48px) / 13); }
+@media (max-width: 1120px) {
+  .hero-visual--boxes .hero-usp-card strong { font-size: 7.08cqw; }
+  .quote-strip-wrap { margin-top: 24px; }
+}
