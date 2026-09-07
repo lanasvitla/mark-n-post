@@ -3312,3 +3312,22 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 
 /* Keep the suitcase illustration clear of the relocation copy. */
 .service-card--relocations .service-card__image { scale: 0.9; transform-origin: bottom right; }
+
+/* Matched service stickers, with an opaque backing across the card border. */
+.service-grid .service-card--relocations,
+.service-grid .service-card--documents { overflow: visible; }
+.service-card__badge {
+  position: absolute;
+  top: -30px;
+  right: 12px;
+  z-index: 3;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .service-card__badge { width: 80px; height: 80px; top: -26px; right: 12px; }
+}
