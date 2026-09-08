@@ -2112,6 +2112,7 @@ details p {
 }
 
 .final-cta-direction-list {
+  max-width: 460px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-gap-xs);
