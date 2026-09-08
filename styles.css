@@ -3290,7 +3290,7 @@ details p {
 }
 
 /* Stage 4 typography and form layout */
-.hero-copy .lead { max-width: 660px; text-wrap: pretty; }
+.hero-copy .lead { max-width: 660px; text-wrap: pretty; margin-bottom: 26px; }
 .lead-return { display: block; }
 .slogan-line { display: block; }
 .hero-usp-card { padding-right: 24px; }
