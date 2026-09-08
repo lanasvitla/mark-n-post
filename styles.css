@@ -3405,5 +3405,5 @@ input[data-focus-placeholder]:focus::placeholder { opacity: 1; }
 .request-form label:has(input[name="request-weight"]),
 .request-form label:has(input[name="contact"]) { padding-bottom: 30px; }
 
-/* Hero heading-to-description spacing: 30px -> 10px. */
-.hero-copy > h1 { margin-bottom: 10px; }
+/* Hero heading-to-description spacing. */
+.hero-copy > h1 { margin-bottom: 20px; }
