@@ -472,7 +472,7 @@ function openTelegramFromForm(form) {
     "",
     "Хочу получить расчет переезда или доставки через Mark’n’Post.",
     "",
-    ...(values.length ? ["Данные отправления:", ...values, ""] : []),
+    ...(values.length ? [...values, ""] : []),
     "Сообщение отправлено с сайта moving.marknpost.com",
   ].join("\n");
 
