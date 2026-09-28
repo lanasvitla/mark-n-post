@@ -20,3 +20,35 @@ document.querySelectorAll('[data-video-guide]').forEach((guide) => {
     });
   });
 });
+
+// Center the visible content, excluding the section's spacing above it.
+(() => {
+  const section = document.getElementById('video-guide');
+  if (!section) return;
+  const alignVideoGuide = () => {
+    if (location.hash !== '#video-guide') return;
+    const heading = section.querySelector('.video-guide-heading').getBoundingClientRect();
+    const layout = section.querySelector('.video-guide-layout').getBoundingClientRect();
+    const headerBottom = Math.max(0, document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0);
+    const available = window.innerHeight - headerBottom;
+    const contentHeight = layout.bottom - heading.top;
+    // On short/mobile screens keep the heading visible and let the block scroll normally.
+    const top = headerBottom + Math.max(24, (available - contentHeight) / 2);
+    window.scrollTo({ top: window.scrollY + heading.top - top, behavior: 'instant' });
+  };
+  window.addEventListener('hashchange', alignVideoGuide);
+  window.addEventListener('load', async () => {
+    await document.fonts.ready;
+    requestAnimationFrame(alignVideoGuide);
+  }, { once: true });
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href]');
+    if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search && url.hash === '#video-guide') {
+      event.preventDefault();
+      if (location.hash !== url.hash) location.hash = url.hash;
+      else alignVideoGuide();
+    }
+  });
+})();
