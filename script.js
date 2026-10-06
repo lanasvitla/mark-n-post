@@ -5,6 +5,7 @@ const contactsSection = document.querySelector("#contacts");
 const motoImage = document.querySelector(".moto-strip__image");
 const telegramUsername = "MarknPost";
 const whatsappPhone = "995511282228";
+const messageSource = `Сообщение отправлено с сайта ${document.body.dataset.messageSource || "moving.marknpost.com"}`;
 const telegramFieldLabels = {
   from: "Откуда",
   to: "Куда",
@@ -17,14 +18,15 @@ const telegramFieldLabels = {
   contact: "Контакт",
 };
 const telegramTemplates = {
-  "moving": "Здравствуйте! Хочу рассчитать перевозку личных вещей при переезде с Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "shop": "Здравствуйте! Хочу узнать условия получения заказа из интернет-магазина через Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "delivery-details": "Здравствуйте! Хочу получить расчет переезда или доставки через Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "hero-calculation": "Здравствуйте! Хочу рассчитать стоимость и сроки переезда или доставки с Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "service-contact": "Здравствуйте! Хочу уточнить услугу Mark’n’Post. Подскажите, пожалуйста, по моему запросу.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "direction-check": "Здравствуйте! Хочу уточнить доступные направления и условия перевозки через Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "handoff-contact": "Здравствуйте! Хочу согласовать передачу вещей для перевозки через Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com",
-  "packing-order": "Здравствуйте! Хочу подобрать упаковку для посылки или переезда в Mark’n’Post.\n\nСообщение отправлено с сайта moving.marknpost.com"
+  "moving": `Здравствуйте! Хочу рассчитать перевозку личных вещей при переезде с Mark’n’Post.\n\n${messageSource}`,
+  "shop": `Здравствуйте! Хочу узнать условия получения заказа из интернет-магазина через Mark’n’Post.\n\n${messageSource}`,
+  "delivery-details": `Здравствуйте! Хочу получить расчет переезда или доставки через Mark’n’Post.\n\n${messageSource}`,
+  "hero-calculation": `Здравствуйте! Хочу рассчитать стоимость и сроки переезда или доставки с Mark’n’Post.\n\n${messageSource}`,
+  "service-contact": `Здравствуйте! Хочу уточнить услугу Mark’n’Post. Подскажите, пожалуйста, по моему запросу.\n\n${messageSource}`,
+  "direction-check": `Здравствуйте! Хочу уточнить доступные направления и условия перевозки через Mark’n’Post.\n\n${messageSource}`,
+  "handoff-contact": `Здравствуйте! Хочу согласовать передачу вещей для перевозки через Mark’n’Post.\n\n${messageSource}`,
+  "packing-order": `Здравствуйте! Хочу подобрать упаковку для посылки или переезда в Mark’n’Post.\n\n${messageSource}`,
+  "process-contact": `Здравствуйте! Мы хотели бы переехать. Могли бы вы проконсультировать нас по процессу переезда?\n\n${messageSource}`
 };
 function openExternalLink(url) {
   const link = document.createElement("a");
@@ -473,7 +475,7 @@ function openTelegramFromForm(form) {
     "Хочу получить расчет переезда или доставки через Mark’n’Post.",
     "",
     ...(values.length ? [...values, ""] : []),
-    "Сообщение отправлено с сайта moving.marknpost.com",
+    messageSource,
   ].join("\n");
 
   openTelegramMessage(message);
