@@ -1,5 +1,4 @@
 .serbia-reel.section-block {
-  padding-block: 78px 72px;
   border-top: 0;
 }
 
@@ -31,6 +30,24 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--hero-usp-bg, #d5f0f6);
+}
+
+.serbia-reel-halo {
+  position: absolute;
+  z-index: -2;
+  top: -20px;
+  left: calc(3% - 20px);
+  width: calc(91% + 40px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(44, 164, 198, .24);
+  pointer-events: none;
+  animation: serbia-reel-halo-pulse 6s ease-in-out infinite;
+}
+
+@keyframes serbia-reel-halo-pulse {
+  0%, 100% { opacity: .5; transform: scale(1); }
+  50% { opacity: .2; transform: scale(1.045); }
 }
 
 .serbia-reel-story-title {
@@ -85,23 +102,21 @@
   position: absolute;
   z-index: 2;
   top: 238px;
-  left: 8%;
+  left: 5%;
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
   margin: 0;
   color: var(--cyan-dark, #087a99);
   font-size: 29px;
   line-height: 1;
 }
 
-.serbia-reel-route-arrow { font-size: .92em; }
-
 .serbia-reel-cover {
   position: absolute;
   z-index: 1;
-  right: -2%;
-  bottom: 32px;
+  right: calc(-2% - clamp(0px, 2.1vw, 30px));
+  bottom: calc(32px - clamp(0px, 1.4vw, 20px));
   display: block;
   width: min(49%, 220px);
   overflow: hidden;
@@ -127,11 +142,18 @@
 }
 
 .serbia-reel-play {
+  top: 40%;
   width: 52px;
   height: 52px;
   border-radius: 50%;
   background: #181818;
   transition: transform 180ms ease;
+  animation: serbia-reel-play-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes serbia-reel-play-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(227, 6, 19, .28); }
+  50% { box-shadow: 0 0 0 8px rgba(227, 6, 19, 0); }
 }
 
 .serbia-reel-cover:hover .serbia-reel-play,
@@ -141,7 +163,7 @@
   position: absolute;
   z-index: 3;
   bottom: 58px;
-  left: 4%;
+  left: calc(4% + clamp(0px, 2.1vw, 30px));
   display: flex;
   align-items: center;
   gap: 10px;
@@ -164,8 +186,16 @@
   left: 39%;
   width: 62px;
   height: 32px;
+  --pointer-drift-x: 8px;
+  --pointer-drift-y: -5px;
   overflow: visible;
   color: var(--cyan, #2ca4c6);
+  animation: serbia-reel-pointer-drift 5.6s ease-in-out infinite alternate;
+}
+
+@keyframes serbia-reel-pointer-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(var(--pointer-drift-x), var(--pointer-drift-y), 0); }
 }
 
 .serbia-reel-pointer path {
@@ -196,7 +226,6 @@
 .serbia-reel-copy { min-width: 0; padding-top: 238px; }
 
 @media (min-width: 1121px) {
-  .serbia-reel.section-block { padding-top: 48px; }
   .serbia-reel-layout {
     align-items: center;
     gap: clamp(56px, 6vw, 88px);
@@ -210,7 +239,7 @@
     position: static;
     flex: 0 0 auto;
   }
-  .serbia-reel-cover { right: calc(-2% - 36px); }
+  .serbia-reel-cover { right: calc(-2% - 36px - clamp(0px, 2.1vw, 30px)); }
   .serbia-reel-pointer {
     left: 38%;
     bottom: 108px;
@@ -279,21 +308,20 @@
   .serbia-reel-copy { padding-top: 213px; }
   .serbia-reel-story-title { top: 58px; font-size: clamp(27px, 3.3vw, 34px); }
   .serbia-reel-route { top: 213px; font-size: 25px; }
-  .serbia-reel-engagement { left: 0; gap: 7px; padding-inline: 10px; font-size: 12px; }
+  .serbia-reel-engagement { left: clamp(8px, 3.2vw, 24px); gap: 7px; padding-inline: 10px; font-size: 12px; }
   .serbia-reel-story { font-size: 15px; }
 }
 
 @media (max-width: 760px) {
-  .serbia-reel.section-block { padding-block: 58px 54px; }
   .serbia-reel-eyebrow { margin-bottom: 20px; }
   .serbia-reel-layout { grid-template-columns: minmax(0, 1fr); gap: 34px; }
   .serbia-reel-art { width: min(100%, 440px); min-height: 440px; }
   .serbia-reel-copy { padding-top: 0; }
   .serbia-reel-story-title { top: 56px; left: 9%; width: 82%; font-size: clamp(30px, 8vw, 39px); }
   .serbia-reel-route { top: 225px; left: 9%; font-size: 28px; }
-  .serbia-reel-cover { right: -2%; bottom: 24px; width: min(48%, 210px); }
-  .serbia-reel-engagement { bottom: 40px; left: 3%; }
-  .serbia-reel-pointer { bottom: 88px; left: 39%; width: 58px; }
+  .serbia-reel-cover { right: calc(-2% - clamp(0px, 4vw, 22px)); bottom: calc(24px - clamp(0px, 1.4vw, 10px)); width: min(48%, 210px); }
+  .serbia-reel-engagement { bottom: 40px; left: calc(3% + clamp(10px, 4vw, 24px)); }
+  .serbia-reel-pointer { bottom: 88px; left: 39%; width: 58px; --pointer-drift-x: 6px; --pointer-drift-y: -4px; }
   .serbia-reel-copy { width: 100%; }
   .serbia-reel-story { font-size: 16px; }
   .serbia-reel-task-icons { gap: 5px; }
@@ -303,14 +331,18 @@
   .serbia-reel-art { min-height: 390px; }
   .serbia-reel-story-title { top: 47px; font-size: clamp(26px, 8vw, 33px); }
   .serbia-reel-route { top: 195px; font-size: 24px; }
-  .serbia-reel-cover { bottom: 24px; width: min(49%, 175px); }
+  .serbia-reel-cover { bottom: calc(24px - clamp(0px, 1.4vw, 6px)); width: min(49%, 175px); }
   .serbia-reel-engagement { bottom: 34px; min-height: 38px; gap: 6px; padding: 7px 9px; font-size: 11px; }
   .serbia-reel-task-icons { gap: 3px; margin-left: 3px; }
   .serbia-reel-story { font-size: 15px; }
   .serbia-reel-steps { gap: 6px; }
+  .serbia-reel-pointer { --pointer-drift-x: 4px; --pointer-drift-y: -3px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .serbia-reel-halo,
+  .serbia-reel-pointer,
+  .serbia-reel-play { animation: none; }
   .serbia-reel-cover,
   .serbia-reel-play { transition: none; }
 }
