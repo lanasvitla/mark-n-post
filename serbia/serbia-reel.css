@@ -249,6 +249,7 @@
   .serbia-reel-copy {
     align-self: center;
     padding-top: 0;
+    transform: translateY(-10px);
     --copy-offset: clamp(0px, 7.3vw, 112px);
     width: calc(100% - var(--copy-offset));
     margin-left: var(--copy-offset);
@@ -265,6 +266,7 @@
 .serbia-reel-task { margin: 0 0 16px; }
 .serbia-reel-task > strong,
 .serbia-reel-solution > strong { color: var(--ink, #181818); font-weight: 800; }
+.serbia-reel-eu-flag { display: inline-block; font-size: 1.5em; line-height: 1; vertical-align: -.12em; }
 
 .serbia-reel-task-description {
   display: block;
@@ -313,7 +315,7 @@
 }
 
 @media (max-width: 760px) {
-  .serbia-reel-eyebrow { margin-bottom: 20px; }
+  .serbia-reel-eyebrow { margin-bottom: 44px; }
   .serbia-reel-layout { grid-template-columns: minmax(0, 1fr); gap: 34px; }
   .serbia-reel-art { width: min(100%, 440px); min-height: 440px; }
   .serbia-reel-copy { padding-top: 0; }

@@ -1,4 +1,4 @@
-@import url("../styles.css");
+@import url("styles.css?v=20261012-1");
 
 .serbia-review-reel {
   position: relative;
@@ -131,6 +131,9 @@
 @keyframes final-cta-doodle-drift{0%,100%{transform:translate(0,0);opacity:.76}50%{transform:translate(2px,-2px);opacity:1}}
 @media(max-width:1020px) and (min-width:861px){.final-cta-doodle{left:calc(55% - 108px);width:108px;height:66px;opacity:.86}}
 @media(max-width:860px){#contacts.final-cta{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "actions" "visual";row-gap:24px}#contacts>.final-cta-visual{width:min(100%,400px);justify-self:start}.final-cta-doodle{display:none}.final-cta-copy .final-cta-title-desktop-line,.final-cta-copy .final-cta-title-line,.final-cta-copy .final-cta-description span{display:inline}.final-cta-copy .final-cta-title-line{margin-top:0}}
+@media (min-width: 541px) and (max-width: 860px) {
+  #contacts .final-cta-description .final-cta-description__team { display: block; }
+}
 @media(max-width:540px){#contacts .contact-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}#contacts .contact-actions .button{min-width:0;width:100%;padding-inline:12px;font-size:14px}#contacts .contact-actions .final-cta-phone{grid-column:1/-1;justify-content:flex-start}}
 @media(prefers-reduced-motion:reduce){.final-cta-doodle{animation:none}}
 
@@ -146,7 +149,7 @@
 .hero-grid {
   width: min(calc(100% - (var(--page-x) * 2)), var(--hero-max));
   margin: 0 auto;
-  padding: 58px 0 22px;
+  padding: 38px 0 22px;
   display: grid;
   grid-template-columns: minmax(0, 760px) minmax(0, 404px);
   gap: 16px;
@@ -238,6 +241,12 @@
 .volume-weight-equation strong {
   color: var(--cyan-dark);
   border-color: rgba(8, 122, 153, .35);
+}
+.volume-weight-equation .equation-payable {
+  color: #fff;
+  background: var(--cyan-dark);
+  border-color: var(--cyan-dark);
+  font-size: clamp(13px, 1.5vw, 16px);
 }
 .volume-weight-caption { margin: 16px 0 0; color: var(--muted); }
 .faq-section .section-heading .eyebrow { color: var(--cyan-dark); }
@@ -473,6 +482,7 @@
   .volume-weight-equation strong { min-height: 42px; padding: 6px 10px; font-size: 16px; }
   .volume-weight-equation .equation-divide { font-size: 14px; }
 }
+
 @media (max-width: 380px) {
   .hero-rating-badges { gap: 7px; }
   .hero-rating-count { font-size: 9px; }
@@ -811,6 +821,114 @@
   }
 }
 
+/* Hero review 2026-10-12: match the updated Figma placement and reflow the decoration on smaller screens. */
+.hero-heading-wrap {
+  position: relative;
+  isolation: isolate;
+}
+.hero-copy > .hero-heading-wrap > h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 12px;
+  padding: 0;
+}
+.hero-title-decoration {
+  position: absolute;
+  z-index: 1;
+  top: 140px;
+  left: 388px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.hero-title-decoration .hero-country-circles {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+.hero-title-decoration .hero-country-circles img {
+  width: 48px;
+  height: 48px;
+  flex-basis: 48px;
+}
+.hero-title-decoration .hero-country-circles img + img { margin-left: -16px; }
+.hero-title-decoration .hero-reverse-tag {
+  position: relative;
+  inset: auto;
+  width: 188px;
+  height: 36px;
+  flex: 0 0 188px;
+  z-index: 1;
+  margin: 0 0 0 -18px;
+}
+.hero-title-decoration .hero-reverse-tag-label { font-size: 20px; }
+.hero-title-decoration .hero-reverse-tag-label > span { top: 6px; left: 26px; }
+.hero-copy .lead {
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+@media (min-width: 768px) and (max-width: 1120px) {
+  .hero-title-decoration {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 8px 0 0;
+  }
+  .hero-title-decoration .hero-country-circles { display: flex; }
+  .hero-title-decoration .hero-country-circles img {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+  .hero-title-decoration .hero-reverse-tag {
+    width: 188px;
+    flex-basis: 188px;
+    height: 36px;
+    margin-left: -14px;
+  }
+  .hero-title-decoration .hero-reverse-tag-label { font-size: 16px; }
+  .hero-title-decoration .hero-reverse-tag-label > span { top: 8px; left: 22px; }
+  .hero-copy .lead { margin-top: 12px; }
+}
+@media (max-width: 767px) {
+  .hero-copy > .hero-heading-wrap > h1 { margin-bottom: 0; }
+  .hero-title-decoration {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 10px 0 0;
+  }
+  .hero-title-decoration .hero-country-circles { display: flex; flex: 0 0 auto; }
+  .hero-title-decoration .hero-country-circles img {
+    width: clamp(32px, 10vw, 40px);
+    height: clamp(32px, 10vw, 40px);
+    flex-basis: clamp(32px, 10vw, 40px);
+  }
+  .hero-title-decoration .hero-country-circles img + img { margin-left: -10px; }
+  .hero-title-decoration .hero-reverse-tag {
+    width: auto;
+    height: 34px;
+    min-width: 0;
+    flex: 1 1 auto;
+    margin-left: -12px;
+  }
+  .hero-title-decoration .hero-reverse-tag-label { font-size: 15px; }
+  .hero-title-decoration .hero-reverse-tag-label > span { top: 8px; left: 22px; }
+  .hero-copy .lead { margin-top: 12px; }
+}
+@media (max-width: 360px) {
+  .hero-title-decoration .hero-country-circles img {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+  .hero-title-decoration .hero-reverse-tag-label { font-size: 14px; }
+}
+
 /* Keep the desktop hero columns inside the viewport and separate the art from the copy. */
 @media (min-width: 1121px) {
   .hero-grid {
@@ -1004,6 +1122,40 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+.volume-weight-mobile-divisor { display: none; }
+
+@media (max-width: 767px) {
+  .notice-card-mobile-break { display: none; }
+
+  .volume-weight-mobile-divisor { display: inline; }
+  .volume-weight-explainer .volume-weight-divisor { display: none; }
+
+  #contacts .contact-actions {
+    display: flex;
+    width: min(100%, 260px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  #contacts .contact-actions .button {
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+    padding-inline: 16px;
+  }
+  #contacts .contact-actions .final-cta-telegram {
+    justify-content: space-between;
+  }
+  #contacts .contact-actions .button-secondary {
+    border-color: var(--cyan-dark);
+    color: var(--cyan-dark);
+    background: #fff;
+  }
+  #contacts .contact-actions .button-secondary:active {
+    background: rgba(8, 122, 153, 0.1);
+  }
+}
+
 @container packing-help (max-width: 240px) {
   .serbia-packing-help .service-contact-card {
     align-items: flex-start;
@@ -1017,4 +1169,255 @@
   }
   .serbia-packing-help .service-contact-card .button { align-self: flex-start; }
   .serbia-packing-help .service-contact-card__image { display: block; }
+}
+
+/* Hero: route list, country photos behind the title, and the reverse-route gradient label. */
+.hero-copy { container-type: inline-size; }
+.hero-countries {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+}
+.hero-countries-arrow {
+  color: var(--cyan-dark);
+  font-size: 1.2em;
+  line-height: 1;
+}
+.hero-copy > h1 {
+  position: relative;
+  padding-bottom: 0;
+  isolation: isolate;
+}
+.hero-title-desktop { position: relative; z-index: 2; }
+.hero-country-circles {
+  position: absolute;
+  z-index: 1;
+  top: 134px;
+  left: 398px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+.hero-country-circles img {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.hero-country-circles img + img { margin-left: -16px; }
+.hero-reverse-tag {
+  position: absolute;
+  z-index: 0;
+  top: 141px;
+  left: 498px;
+  display: block;
+  width: 188px;
+  height: 36px;
+  overflow: visible;
+}
+.hero-reverse-tag-label {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.hero-reverse-tag-label::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, #d3eff7 64.8%, rgb(245 245 247 / 0%) 100%);
+}
+.hero-reverse-tag-label > span {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  z-index: 1;
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+@media (max-width: 1120px) {
+  .hero-country-circles { display: none; }
+  .hero-reverse-tag {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(225px, 64vw);
+    height: 36px;
+    margin: 9px 4% 12px auto;
+  }
+  .hero-reverse-tag-label { font-size: 16px; }
+  .hero-reverse-tag-label > span { top: 8px; left: 10px; }
+}
+@media (max-width: 767px) {
+  .hero-countries { gap: 0 7px; font-size: 12px; }
+  .hero-reverse-tag { margin: 8px 4% 12px auto; }
+}
+@media (max-width: 380px) {
+  .hero-countries { gap: 0 5px; font-size: 11px; }
+  .hero-reverse-tag { width: min(210px, 64vw); margin-right: 2%; }
+}
+
+/* Desktop hero matches the 1440 px Figma reference. */
+@media (min-width: 1121px) {
+  .hero-visual.hero-visual--boxes {
+    position: relative;
+    display: block;
+    align-self: start;
+    justify-self: end;
+    width: 404px;
+    height: 500px;
+    min-height: 500px;
+    container-type: normal;
+  }
+  .hero-visual--boxes .hero-relocation-image {
+    position: absolute;
+    z-index: 3;
+    top: -13px;
+    left: 20px;
+    width: 370px;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    object-fit: initial;
+  }
+  .hero-visual--boxes .hero-usp-card {
+    position: absolute;
+    z-index: 1;
+    top: 276px;
+    left: -24px;
+    width: 428px;
+    height: 155px;
+    min-height: 155px;
+    padding: 58px 24px 28px;
+  }
+  .hero-visual--boxes .hero-usp-card strong {
+    width: auto;
+    max-width: 380px;
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.05;
+  }
+}
+
+/* Desktop hero refinements: keep the calculator clear of the blue USP panel. */
+@media (min-width: 1121px) {
+  .hero-grid { padding-bottom: 0; }
+  .hero .quote-strip-wrap {
+    margin-top: -99px;
+    transform: translateY(50%);
+  }
+  .hero .quote-strip {
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    background: var(--line);
+    background-clip: padding-box;
+  }
+  .hero .quote-submit {
+    border-radius: 0 var(--radius-button) var(--radius-button) 0;
+  }
+  .hero-countries { gap: 0 5px; }
+}
+
+/* Figma people illustration, aligned to the desktop hero frame above the existing panel. */
+@media (min-width: 1121px) {
+  .hero-visual--boxes .hero-relocation-image {
+    align-self: flex-start;
+    width: 505.64px;
+    height: 337.1px;
+    margin-top: 3px;
+    margin-left: -83.25px;
+    margin-bottom: -24px;
+    object-fit: cover;
+    object-position: center;
+    transform: translateY(-12px);
+  }
+  .hero-visual--boxes .hero-usp-card { padding: 24px; }
+  .hero .quote-strip-wrap {
+    margin-top: -109px;
+    transform: translateY(50%);
+  }
+}
+
+/* Reflow: preserve the compact hero artwork and CTA when the right column moves below the copy. */
+.hero-title-tablet { display: none; }
+@media (max-width: 1120px) {
+  .hero-grid { row-gap: 0; }
+  .hero-copy { padding-bottom: 0; }
+  .hero-countries { margin-bottom: 8px; }
+  .hero-actions { margin-bottom: 0; }
+  .hero-actions .hero-primary-action {
+    width: auto;
+    max-width: 100%;
+    justify-self: start;
+  }
+  .hero-visual.hero-visual--boxes {
+    width: min(535px, 100%);
+    min-height: 0;
+    height: auto;
+    justify-self: start;
+    align-self: start;
+    align-items: flex-start;
+    transform: none;
+  }
+  .hero-visual--boxes .hero-relocation-image {
+    align-self: flex-start;
+    width: 94.5%;
+    height: auto;
+    margin: 0 0 -4.5cqw;
+    object-fit: initial;
+    transform: none;
+  }
+  .hero-visual--boxes .hero-usp-card {
+    align-self: flex-start;
+    width: 80%;
+    min-height: 0;
+    padding: clamp(16px, 4.5cqw, 24px);
+  }
+  .hero-visual--boxes .hero-usp-card strong {
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(16px, 4.5cqw, 24px);
+    line-height: 1.05;
+  }
+}
+@media (min-width: 768px) and (max-width: 1120px) {
+  .hero-title-desktop,
+  .hero-title-mobile { display: none; }
+  .hero-title-tablet { display: inline; }
+  .hero-copy > .hero-heading-wrap > h1 {
+    max-width: 100%;
+    font-size: clamp(44px, 5.4vw, 60px);
+    line-height: .99;
+    text-wrap: initial;
+  }
+}
+@media (max-width: 767px) {
+  .hero-visual.hero-visual--boxes { width: min(535px, 100%); }
+  .hero-visual--boxes .hero-relocation-image {
+    /* Align the visible alpha silhouette to the narrower card, not the transparent image canvas. */
+    width: 89.3%;
+    align-self: flex-start;
+    margin-left: 0.6%;
+    margin-bottom: -6cqw;
+  }
+  .hero-visual--boxes .hero-usp-card {
+    width: 80%;
+    align-self: center;
+  }
 }
