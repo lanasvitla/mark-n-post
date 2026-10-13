@@ -925,3 +925,28 @@
 
   .direction-carousel-arrows { gap: 20px; }
 }
+
+/* Mobile route cards: lead with the route and capital, without the flag row. */
+@media (max-width: 720px) {
+  .direction-card__media,
+  .direction-card--spain .direction-card__media { display: none; }
+
+  .direction-card__content,
+  .direction-card--spain .direction-card__content { padding: 45px 19px; }
+
+  .direction-card__heading,
+  .direction-card--spain .direction-card__heading {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .direction-capital {
+    flex: 0 0 auto;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .direction-carousel-arrows { justify-content: flex-start; }
+}
