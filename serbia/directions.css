@@ -950,3 +950,262 @@
 
   .direction-carousel-arrows { justify-content: flex-start; }
 }
+
+/* Narrow tablet: keep one complete route card in view and expose carousel controls. */
+@media (min-width: 721px) and (max-width: 900px) {
+  .direction-carousel { display: flex; flex-direction: column; }
+
+  .direction-carousel-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 5px;
+    width: 100%;
+    margin: 0 0 14px;
+  }
+
+  .direction-swipe-hint {
+    display: inline-flex;
+    min-height: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    white-space: nowrap;
+  }
+
+  .direction-swipe-hint svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--cyan-dark);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .direction-progress-group { align-items: flex-start; text-align: left; }
+
+  .direction-viewport {
+    flex: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .direction-viewport::-webkit-scrollbar { display: none; }
+  .direction-track { display: flex; width: max-content; align-items: stretch; gap: 16px; }
+  .direction-stack { display: contents; }
+
+  .direction-card,
+  .direction-card.is-expanded,
+  .direction-card.is-collapsed {
+    display: flex;
+    flex: 0 0 calc(100vw - 56px);
+    width: calc(100vw - 56px);
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    flex-direction: column;
+    border: 1px solid var(--cyan-dark);
+    border-radius: 24px;
+    cursor: default;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .direction-card__tab { display: none; }
+  .direction-card__media,
+  .direction-card--spain .direction-card__media { display: none; }
+  .direction-card__content,
+  .direction-card--spain .direction-card__content {
+    min-height: 0;
+    flex: 0 0 auto;
+    padding: 30px 19px;
+    overflow: visible;
+  }
+
+  .direction-card__heading,
+  .direction-card--spain .direction-card__heading {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .direction-card__content h3,
+  .direction-card--spain .direction-card__content h3 {
+    min-width: 0;
+    font-size: clamp(24px, 3.2vw, 32px);
+    white-space: nowrap;
+  }
+
+  .direction-capital { flex: 0 0 auto; margin: 0; white-space: nowrap; }
+  .direction-toggle { margin: 12px 0 18px; }
+
+  .direction-carousel-bottom { display: block; margin-top: 12px; }
+  .direction-carousel-arrows { justify-content: flex-start; gap: 20px; }
+
+  .direction-arrow {
+    display: inline-flex;
+    width: 54px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .direction-arrow svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .direction-arrow--previous { color: var(--cyan-dark); background: #f3f6f8; }
+  .direction-arrow--next { color: #fff; background: var(--cyan-dark); }
+}
+
+/* Tablet: keep the desktop card composition and browse countries one at a time. */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .direction-carousel { position: relative; display: flex; flex-direction: column; }
+
+  .direction-carousel-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+    margin: 0 0 14px;
+  }
+
+  .direction-swipe-hint {
+    display: inline-flex;
+    min-height: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: #626262;
+    font-size: 18px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  .direction-swipe-hint svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: var(--cyan-dark);
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .direction-progress-group { align-items: flex-start; text-align: left; }
+  .direction-progress { width: 200px; height: 8px; margin: 0; }
+  .direction-progress span { height: 100%; }
+  .direction-slide-count { margin: 0; color: #626262; font-size: 15px; line-height: 20px; }
+
+  .direction-carousel-bottom {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: block;
+    margin: 0;
+  }
+
+  .direction-carousel-arrows { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+
+  .direction-arrow {
+    display: inline-flex;
+    width: 88px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .direction-arrow svg {
+    display: block;
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .direction-arrow--previous { color: var(--cyan-dark); background: #f3f6f8; }
+  .direction-arrow--next { color: #fff; background: var(--cyan-dark); }
+
+  .direction-viewport {
+    flex: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .direction-viewport::-webkit-scrollbar { display: none; }
+  .direction-track { display: flex; width: max-content; align-items: stretch; gap: 16px; }
+  .direction-stack { display: contents; }
+
+  .direction-card,
+  .direction-card.is-expanded,
+  .direction-card.is-collapsed {
+    display: flex;
+    flex: 0 0 calc(100vw - 56px);
+    width: calc(100vw - 56px);
+    min-width: 0;
+    min-height: 516px;
+    height: 516px;
+    flex-direction: row;
+    border: 3px solid var(--cyan-dark);
+    border-left: 0;
+    border-radius: 60px 18px 18px 60px;
+    cursor: default;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .direction-card__tab { display: none; }
+  .direction-card__media,
+  .direction-card--spain .direction-card__media {
+    display: block;
+    flex: 0 0 clamp(280px, 32vw, 350px);
+    width: auto;
+    height: auto;
+  }
+
+  .direction-card__content,
+  .direction-card--spain .direction-card__content {
+    display: block;
+    min-height: 0;
+    flex: 1 1 auto;
+    padding: 29px 30px 20px 36px;
+    overflow: visible;
+  }
+
+  .direction-card__content h3 { font-size: clamp(30px, 3.3vw, 40px); }
+  .direction-toggle { margin-bottom: 38px; }
+}
