@@ -103,7 +103,7 @@
         </h2>
         <p>
           <span class="cookie-consent__message">На&nbsp;сайте используются cookie и&nbsp;системы аналитики для&nbsp;работы сайта и&nbsp;оценки эффективности.</span>
-          <span class="cookie-consent__details-line">Подробнее&nbsp;– в&nbsp;<a
+          <span class="cookie-consent__details-line">Подробнее&nbsp;читайте в&nbsp;<a
               class="cookie-consent__details"
               href="/privacy/"
             >Политике конфиденциальности</a>.</span>
