@@ -316,7 +316,7 @@ p {
   position: absolute;
   left: 0;
   color: var(--cyan-dark);
-  content: "—";
+  content: "–";
 }
 
 .fact-list a {
