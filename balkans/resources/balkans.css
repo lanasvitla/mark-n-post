@@ -1,6 +1,6 @@
 @import url("styles.css?v=20261021-menu-v4");
 
-.serbia-review-reel {
+.balkans-review-reel {
   position: relative;
 }
 
@@ -55,7 +55,7 @@
     height: 110px;
   }
 
-  .serbia-review-reel .review-media-label,
+  .balkans-review-reel .review-media-label,
   .review-marquee-highlight-marknpost .review-media-label {
     right: 5px;
     bottom: 8px;
