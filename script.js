@@ -154,6 +154,15 @@ function initReviewMarquee(marquee) {
   let skipNextFocusPause = false;
   let isVisible = false;
   let isManuallyPaused = false;
+  const slideAdvances = new Map();
+
+  function measureSlideAdvances() {
+    const trackStyles = window.getComputedStyle(track);
+    const slideGap = Number.parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+    slides.forEach((slide) => {
+      slideAdvances.set(slide, slide.getBoundingClientRect().width + slideGap);
+    });
+  }
 
   function updateToggle() {
     toggle.dataset.state = isManuallyPaused ? "play" : "pause";
@@ -267,20 +276,16 @@ function initReviewMarquee(marquee) {
   }
 
   function recyclePassedSlides() {
-    const viewportRect = viewport.getBoundingClientRect();
-    const paddingLeft = Number.parseFloat(window.getComputedStyle(viewport).paddingLeft) || 0;
-    const targetX = viewportRect.left + paddingLeft;
     let rotations = 0;
 
     while (rotations < slides.length) {
       const firstSlide = track.firstElementChild;
       const nextSlide = firstSlide?.nextElementSibling;
-      if (!firstSlide || !nextSlide || firstSlide.getBoundingClientRect().right > targetX) break;
+      const advance = slideAdvances.get(firstSlide);
+      if (!firstSlide || !nextSlide || advance === undefined || viewport.scrollLeft < advance) break;
 
-      const nextLeftBefore = nextSlide.getBoundingClientRect().left;
       track.appendChild(firstSlide);
-      const nextLeftAfter = nextSlide.getBoundingClientRect().left;
-      setScrollLeftInstant(viewport.scrollLeft + nextLeftAfter - nextLeftBefore);
+      setScrollLeftInstant(viewport.scrollLeft - advance);
       autoplayPosition = viewport.scrollLeft;
       rotations += 1;
     }
@@ -379,12 +384,14 @@ function initReviewMarquee(marquee) {
   document.addEventListener("visibilitychange", scheduleAutoplay);
 
   window.addEventListener("resize", () => {
+    measureSlideAdvances();
     goToSlide(activeIndex, "auto");
     updateToggle();
     scheduleAutoplay();
   });
 
   desktopMedia.addEventListener("change", () => {
+    measureSlideAdvances();
     goToSlide(activeIndex, "auto");
     scheduleAutoplay();
   });
@@ -394,6 +401,7 @@ function initReviewMarquee(marquee) {
     scheduleAutoplay();
   });
 
+  measureSlideAdvances();
   setActiveDot(0);
   updateToggle();
   scheduleAutoplay();

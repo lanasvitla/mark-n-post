@@ -1540,6 +1540,19 @@ h3 + p {
   align-items: baseline;
 }
 
+.review-source-update {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.faq-list .faq-related-link {
+  color: var(--cyan-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .review-marquee {
   margin-top: var(--space-gap-section-content-large);
   padding-bottom: 4px;
